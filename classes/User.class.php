@@ -47,9 +47,38 @@
             $statement->bindValue(':name',$this->Name);
             $statement->bindValue(':password',$this->Password);
             $statement->execute();
-
-
         }
+
+        public function login($s_name, $s_password){
+            try
+            {
+                $conn = Db::getInstance();
+                $statement = $conn->prepare("SELECT * FROM user WHERE name=:name");
+                $statement->bindValue(':name',$this->Name);
+                $statement->execute();
+                $userRow=$statement->fetch(PDO::FETCH_ASSOC);
+                if($statement->rowCount() > 0)
+                {
+                    if(password_verify($p_password, $userRow['password']))
+                    {
+                        session_start();
+                        $_SESSION['loggedin'] = "ja";
+                        $_SESSION['name'] = $s_Name;
+                        $_SESSION['userID'] = $userRow['id'];
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch(PDOException $e)
+            {
+                echo $e->getMessage();
+            }
+        }
+
     }
 
 ?>
