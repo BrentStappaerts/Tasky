@@ -12,9 +12,8 @@ if( !empty( $_POST ) ){
         $user->register();
 
     }catch(Exception $e){
-        
+        $feedback = $e->getMessage();
     }
-
 }
 
 ?><!DOCTYPE html>
@@ -35,6 +34,7 @@ if( !empty( $_POST ) ){
         </div>
         <div id="transparant">
         <div class="col-sm-5 .col-md-6" id="registerForm">
+        <?php if(isset($feedback)){ echo "<div class='alert alert-danger' role='alert'>".$feedback."</div>";}?>
         <form action="" class="post__form--register" method="post">
             <div class="form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
