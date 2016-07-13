@@ -39,4 +39,17 @@
             }
         }
 
+        public function register(){
+            $conn = Db::getInstance();
+
+            $statement = $conn->prepare('INSERT INTO user (email,name,password) VALUES  ( :email,:name,:password)');
+            $statement->bindValue(':email',$this->Email);
+            $statement->bindValue(':name',$this->Name);
+            $statement->bindValue(':password',$this->Password);
+            $statement->execute();
+
+
+        }
+    }
+
 ?>

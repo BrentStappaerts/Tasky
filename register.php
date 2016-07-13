@@ -1,4 +1,23 @@
-<!DOCTYPE html>
+<?php
+include_once "classes/User.class.php";
+
+session_start();
+
+if( !empty( $_POST ) ){
+    try{
+        $user = new User();
+        $user->Email = $_POST['email'];
+        $user->Name = $_POST['name'];
+        $user->Password = $_POST['password'];
+        $user->register();
+
+    }catch(Exception $e){
+        
+    }
+
+}
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,15 +39,12 @@
             <div class="form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
             </div>
-
             <div class="form-group">
-                <input type="text" class="form-control"  name="Name" id="Name" placeholder="Name">
+                <input type="text" class="form-control"  name="name" id="name" placeholder="Name">
             </div>
-
             <div class="form-group">
                 <input type="password" class="form-control"  name="password" id="password" placeholder="Password">
             </div>
-
             <div class="form-group">
                 <input type="submit" class="btn btn-warning form--register__btn" value="Registreer nu!">
             </div>
