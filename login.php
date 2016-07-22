@@ -1,62 +1,56 @@
 <?php
+spl_autoload_register(function ($class_name) {
+    include 'classes/' .$class_name . '.class.php';
+});
 
-include_once "classes/User.class.php";
-
-session_start();
-
-    if(isset($_SESSION['loggedin'])){
-        header('location: home.php');
+if(!empty($_POST)){
+    if($_POST['action'] === "inloggen") {
+        if(!empty($_POST["email"]) && !empty($_POST["passwordLogin"])){
+            $user = new User();
+            $user->Email = $_POST["email"];
+            $user->Password = $_POST["passwordLogin"];
+            if($user->canLogin()){
+                $_SESSION['loggedin'] = true;
+                header('Location: home.php');
+            }  else {
+                echo"Could not log you on";
+            }
+        }else{
+            echo "Please fill in all fields";
+        }
     }
-
-    if(!empty($_POST)){
-      $user = new User();
-      $name = $_POST['name'];
-      $password = $_POST['password'];
-
-      if($user->Login($name, $password)){
-            $_SESSION['loggedin'] = "ja";
-            header('location: home.php');
-      }else{
-        $feedback = "Foute inlogegegvens. Probeer opnieuw!.";
-      }
-    }
-
-
-
-?><!DOCTYPE html>
+}
+?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasky | Login</title>
-
+    <title>Tasky | Inloggen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+</head>
 <body>
-    <div class="form--register">
-        <div class="col-sm-5 .col-md-6" id="logoForm">
-            <img src="public/images/TaskyLogo.png" width="100%" />
-        </div>
-        <div id="transparant">
-        <div class="col-sm-5 .col-md-6" id="registerForm">
-        <form action="" class="post__form--login" method="post">
+<div class="form--register">
+    <div class="col-sm-5 .col-md-6" id="leftForm">
+        <img src="public/images/TaskyLogo.png" width="100%" />
+    </div>
+    <div class="col-sm-5 .col-md-6" id="rightForm">
+        <form action="" method="post">
             <div class="form-group">
-                <input type="text" class="form-control"  name="name" id="name" placeholder="Name">
+                <input type="text" name="email" placeholder="Email" />
             </div>
             <div class="form-group">
-                <input type="password" class="form-control"  name="password" id="password" placeholder="Password">
+                <input type="password" name="passwordLogin" placeholder="Password" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-warning form--login__btn" value="Inloggen">
+                <input type="hidden" name="action" value="inloggen">
+                <input type="submit" class="btn btn-warning form--login__btn" name="btnLogin" value="Inloggen" />
             </div>
         </form>
     </div>
-    </div>
+</div>
 
-    </div>
-    </div>
-	
 </body>
 </html>

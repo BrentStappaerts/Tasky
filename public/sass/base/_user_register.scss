@@ -1,6 +1,6 @@
 
 
-#registerForm{
+#rightForm{
 	margin-top: 40px;
 }
 .form-group input{
@@ -8,8 +8,9 @@
 }
 
 
+
 @media only screen and (min-width: 800px) {
-    #registerForm{
+    #rightForm{
 	width: 50%;
 }
 .form--register{

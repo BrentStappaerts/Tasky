@@ -1,59 +1,54 @@
 <?php
-include_once "classes/User.class.php";
+spl_autoload_register(function ($class_name) {
+    include 'classes/' .$class_name . '.class.php';
+});
 
-session_start();
-
-if( !empty( $_POST ) ){
-    try{
-        $user = new User();
-        $user->Email = $_POST['email'];
-        $user->Name = $_POST['name'];
-        $user->Password = $_POST['password'];
-        $user->register();
-
-    }catch(Exception $e){
-        $feedback = $e->getMessage();
+if(!empty($_POST)){
+    if($_POST['action'] === "registreer") {
+        if(!empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST['password'])) {
+            $user = new User();
+            $user->Name = $_POST["name"];
+            $user->Email = $_POST["email"];
+            $user->Password = $_POST["password"];
+            $user->Register();
+        }
     }
 }
-
-?><!DOCTYPE html>
+?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasky | Register</title>
-
+    <title>Tasky | Registreren</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+</head>
 <body>
-    <div class="form--register">
-        <div class="col-sm-5 .col-md-6" id="logoForm">
-            <img src="public/images/TaskyLogo.png" width="100%" />
-        </div>
-        <div id="transparant">
-        <div class="col-sm-5 .col-md-6" id="registerForm">
-        <?php if(isset($feedback)){ echo "<div class='alert alert-danger' role='alert'>".$feedback."</div>";}?>
-        <form action="" class="post__form--register" method="post">
+
+<div class="form--register">
+    <div class="col-sm-5 .col-md-6" id="leftForm">
+        <img src="public/images/TaskyLogo.png" width="100%" />
+    </div>
+    <div class="col-sm-5 .col-md-6" id="rightForm">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                <input type="text" name="name" placeholder="Full name" />
             </div>
             <div class="form-group">
-                <input type="text" class="form-control"  name="name" id="name" placeholder="Name">
+                <input type="email" name="email" placeholder="Email" />
             </div>
             <div class="form-group">
-                <input type="password" class="form-control"  name="password" id="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-warning form--register__btn" value="Registreer nu!">
+                <input type="hidden" name="action" value="registreer">
+                <input type="submit" class="btn btn-warning form--login__btn"  name="btnSignup" value="Registreren" />
             </div>
         </form>
     </div>
-    </div>
+</div>
 
-    </div>
-    </div>
-	
 </body>
 </html>
