@@ -31,8 +31,8 @@
 <body>
     <nav>
     <img src="public/images/TaskyLogo.png" width="10%" />
-
     <a href="logout.php">Uitloggen</a>
+    <a href="add.php">Toevoegen</a>
     </nav>
     <div id="timeline">
         <div class="col-sm-5 .col-md-6" id="leftbalk">
