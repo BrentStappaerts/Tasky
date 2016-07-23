@@ -32,5 +32,11 @@ class Lijst {
             throw new Exception("Please fill in all fields");
         }
     }
+
+    public function getAll(){
+            $PDO = Db::getInstance();
+            $allLists = $PDO->query("SELECT name FROM lists;")->fetchAll(PDO::FETCH_COLUMN);
+            return $allLists;
+    }
 }
 ?>
