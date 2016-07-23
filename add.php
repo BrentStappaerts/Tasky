@@ -16,15 +16,18 @@
     else {
         header('Location: index.php');
     }
-if(!empty($_POST)){
-    if($_POST['action'] === "add") {
-        if(!empty($_POST["name"])) {
-            $lijst = new Lijst();
+
+  $lijst = new Lijst();
+    
+    if(!empty($_POST)) {
+        try {
             $lijst->Name = $_POST["name"];
             $lijst->Add();
+            $succes = "Lijst succesvol toegevoegd!";
+        } catch (Exception $e) {
+            $error = $e->getMessage();
         }
     }
-}
 
 ?><!doctype html>
 <html lang="en">
@@ -64,7 +67,21 @@ if(!empty($_POST)){
                 <input type="submit" class="btn btn-warning form--add__btn" name="btnAdd" value="Add" />
             </div>
         </form>
+
+
+        <?php if(isset($error)): ?>
+        <div class="error">
+            <?php echo $error; ?>
         </div>
+        <?php endif; ?>
+
+        <?php if(isset($succes)): ?>
+        <div class="feedback">
+            <?php echo $succes; ?>
+        </div>
+        <?php endif; ?>
+    </form>
+
 
     </div>
 </div>

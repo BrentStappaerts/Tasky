@@ -17,6 +17,11 @@
         header('Location: index.php');
     }
 
+    $lijst = new Lijst();
+    $allLists = $lijst->getAll();
+    //print_r($allLists);
+ 
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -45,7 +50,17 @@
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-            <p>test</p>
+            <?php if(count($allLists) > 0):?>
+            <ul class="comments__list">
+                <?php foreach( $allLists as $item): ?>
+                <li class="comments__list__item">
+                     <a href="list.php?list=<?php echo $item['list_id'] ?>"><?php echo $item ?></a>              
+                 </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php else: ?>
+                <ul class="comments__list"></ul>
+            <?php endif; ?>
         </div>
 
     </div>
