@@ -17,6 +17,15 @@
 	margin-top: 15px;
 	float: right;
 }
+.comments__list{
+	margin-top: 20px;
+}
+.comments__list__item a{
+	color: white;
+}
+.comments__list__item a:hover{
+	text-decoration: none;
+}
 
 #home{
 	width: 80%;
