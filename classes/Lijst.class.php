@@ -24,8 +24,9 @@ class Lijst {
     public function Add() {
         if(!empty($this->m_sName)){
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("INSERT INTO lists (name) values (:name)");
+            $statement = $PDO->prepare("INSERT INTO lists (name, userID) values (:name, :userID)");
             $statement->bindValue(":name", $this->m_sName);
+            $statement->bindParam(":userID", $_SESSION['user_id']);
             $statement->execute();
         }
         else {
@@ -35,8 +36,12 @@ class Lijst {
 
     public function getAll(){
             $PDO = Db::getInstance();
-            $allLists = $PDO->query("SELECT name FROM lists;")->fetchAll(PDO::FETCH_COLUMN);
+            $statement = $PDO->prepare("SELECT name FROM lists WHERE userID = :userID");
+            $statement->bindParam(":userID", $_SESSION['user_id']);
+            $statement->execute();
+            $allLists = $statement->fetchAll(PDO::FETCH_COLUMN);
             return $allLists;
     }
 }
 ?>
+
