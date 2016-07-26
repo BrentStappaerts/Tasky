@@ -67,6 +67,12 @@
     width: 90%;
     margin-right: auto;
     margin-left: auto; } }
+#taak {
+  margin-top: 100px; }
+
+#taak h5 {
+  font-size: 20px; }
+
 body {
   display: block;
   width: 100vw;
