@@ -20,6 +20,12 @@
     $lijst = new Lijst();
     $allLists = $lijst->getAll();
     //print_r($allLists);
+
+    if(!empty($_POST['btnDeleteList'])){
+        $lijst = new Lijst();
+        $lijst->deleteList();
+    }
+
  
 
 ?><!doctype html>
@@ -34,11 +40,7 @@
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
 </head>
 <body>
-    <nav>
-    <img src="public/images/TaskyLogo.png" width="10%" />
-    <a href="logout.php">Uitloggen</a>
-    <a href="add.php">Toevoegen</a>
-    </nav>
+    <?php include 'nav.inc.php'; ?></div>
     <div id="timeline">
         <div class="col-sm-5 .col-md-6" id="leftbalk">
             <img src="public/images/profile.png"/>
@@ -54,7 +56,11 @@
             <ul class="comments__list">
                 <?php foreach( $allLists as $item): ?>
                 <li class="comments__list__item">
-                     <a href="list.php?list=<?php echo $item['list_id'] ?>"><?php echo $item ?></a>              
+                     <a href="list.php?list=<?php echo $item ?>"><?php echo $item ?></a> 
+                     <form action="" method="post">
+                         <input type="hidden" name="deleteListID" id="deleteListID" class="deleteID">
+                         <input type="submit" value="Verwijder deze lijst" class="list__delete" name="btnDeleteList" id="btnDeleteList">
+                    </form>             
                  </li>
                 <?php endforeach; ?>
             </ul>

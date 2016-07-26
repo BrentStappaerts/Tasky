@@ -42,6 +42,12 @@ class Lijst {
             $allLists = $statement->fetchAll(PDO::FETCH_COLUMN);
             return $allLists;
     }
+
+    public function deleteList(){
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("DELETE * FROM lists");
+            $statement->execute();
+    }
 }
 ?>
 

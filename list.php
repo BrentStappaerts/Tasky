@@ -16,7 +16,23 @@
     else {
         header('Location: index.php');
     }
- 
+    $deadline = new Deadline();
+    
+    if(!empty($_POST)) {
+        try {
+            $deadline->Titel = $_POST["titel"];
+            $deadline->Vak = $_POST["vak"];
+            $deadline->Datum = $_POST["datum"];
+            $deadline->Add();
+            $succes = "Taak succesvol toegevoegd!";
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+    }
+    $deadline = new Deadline();
+    $allTasks = $deadline->getAll();
+
+
 
 ?><!doctype html>
 <html lang="en">
@@ -30,11 +46,7 @@
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
 </head>
 <body>
-    <nav>
-    <img src="public/images/TaskyLogo.png" width="10%" />
-    <a href="logout.php">Uitloggen</a>
-    <a href="add.php">Toevoegen</a>
-    </nav>
+    <?php include 'nav.inc.php'; ?></div>
     <div id="timeline">
         <div class="col-sm-5 .col-md-6" id="leftbalk">
             <img src="public/images/profile.png"/>
@@ -43,10 +55,52 @@
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
                 <a href=""><img src="public/images/settings.png" /></a>
-            </div>   
+            </div>  
+            <div id="taak">
+            <h5>Taak toevoegen aan de lijst</h5>
+            <form action="" method="post">
+            <div class="form-group">
+                <input type="text" name="titel" placeholder="Naam taak" />
+            </div>
+            <div class="form-group">
+                <input type="text" name="vak" placeholder="Vak" />
+            </div>
+            <div class="form-group">
+                <input type="text" name="datum" placeholder="Datum" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="action" value="addTaak">
+                <input type="submit" class="btn btn-warning form--addTaak__btn" name="btnAddTaak" value="Taak toevoegen" />
+            </div>
+                    <?php if(isset($error)): ?>
+        <div class="error">
+            <?php echo $error; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if(isset($succes)): ?>
+        <div class="feedback">
+            <?php echo $succes; ?>
+        </div>
+        <?php endif; ?>
+        </form>
+    </div>
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-                <h5><?php print($lijstRow['name']); ?></h5>
+                <h5>Naam taak</h5>
+                <?php if(count($allTasks) > 0):?>
+            <ul class="comments__list">
+                <?php foreach( $allTasks as $item): ?>
+                <li class="comments__list__item">
+                     <a href="taak.php?taak=<?php echo $item ?>"><?php echo $item ?></a> 
+           
+                 </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php else: ?>
+                <ul class="comments__list"></ul>
+            <?php endif; ?>
+        </div>
         </div>
 
     </div>
