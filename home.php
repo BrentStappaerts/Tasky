@@ -21,9 +21,10 @@
     $allLists = $lijst->getAll();
     //print_r($allLists);
 
-    if(!empty($_POST['btnDeleteList'])){
+    if(isset($_POST['btnDeleteList'])) {
         $lijst = new Lijst();
-        $lijst->deleteList();
+        $lijst->ListID = $_POST["deleteListID"];
+        $result = $lijst->deleteList();
     }
 
  
@@ -54,12 +55,16 @@
         <div class="col-sm-5 .col-md-6" id="home">
             <?php if(count($allLists) > 0):?>
             <ul class="comments__list">
-                <?php foreach( $allLists as $item): ?>
+                <?php foreach($allLists as $row): ?>
+                <?php
+                $list_id = $row['list_id'];
+                $list_name = $row['name'];
+                ?>
                 <li class="comments__list__item">
-                     <a href="list.php?list=<?php echo $item ?>"><?php echo $item ?></a> 
+                     <a href="list.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
                      <form action="" method="post">
-                         <input type="hidden" name="deleteListID" id="deleteListID" class="deleteID">
-                         <input type="submit" value="Verwijder deze lijst" class="list__delete" name="btnDeleteList" id="btnDeleteList">
+                         <input type="hidden" name="deleteListID" value="<?php echo $list_id; ?>">
+                         <input type="submit" name="btnDeleteList" value="Verwijder deze lijst">
                     </form>             
                  </li>
                 <?php endforeach; ?>

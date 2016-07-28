@@ -3,12 +3,16 @@
 require_once('Db.class.php');
 class Lijst {
     private $m_sName;
+    private $m_sListID;
     
     public function __set($p_sProperty, $p_vValue)
     {
         switch ($p_sProperty){
             case "Name":
                 $this->m_sName = $p_vValue;
+                break;
+            case "ListID":
+                $this->m_sListID = $p_vValue;
                 break;
         }
     }
@@ -17,6 +21,9 @@ class Lijst {
         switch ($p_sProperty) {
             case "Name":
                 return $this->m_sName;
+                break;
+            case "ListID":
+                return $this->m_sListID;
                 break;
         }
     }
@@ -36,18 +43,20 @@ class Lijst {
 
     public function getAll(){
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("SELECT name FROM lists WHERE userID = :userID");
+            $statement = $PDO->prepare("SELECT * FROM lists WHERE userID = :userID");
             $statement->bindParam(":userID", $_SESSION['user_id']);
             $statement->execute();
-            $allLists = $statement->fetchAll(PDO::FETCH_COLUMN);
+            $allLists = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $allLists;
     }
 
     public function deleteList(){
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("DELETE * FROM lists");
+            $statement = $PDO->prepare("DELETE FROM lists WHERE list_id = :listID");
+            $statement->bindValue(":listID", $this->m_sListID);
             $statement->execute();
     }
 }
 ?>
+
 
