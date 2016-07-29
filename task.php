@@ -16,7 +16,21 @@
     else {
         header('Location: index.php');
     }
+    $comment = new Comment();
+    
+    if(!empty($_POST)) {
+        try {
+            $comment->Comment = $_POST["comment"];
+            $comment->Add();
+            $succes = "Comment succesvol toegevoegd!";
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+    }
     $deadline = new Deadline();
+    $oneTask = $deadline->getTask();
+
+
 
 ?><!doctype html>
 <html lang="en">
@@ -43,7 +57,49 @@
 
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-                <h5>Test</h5>
+                <h5>Naam taak</h5>
+                <?php if(count($oneTask) > 0):?>
+            <ul class="comments__list">
+                <?php foreach( $oneTask as $row): ?>
+                <?php
+                $deadline_id = $row['deadline_id'];
+                $deadline_name = $row['titel'];
+                $deadline_vak = $row['vak'];
+                ?>
+                <li class="comments__list__item">
+                     <p><?php echo $deadline_name; ?></p> 
+                     <p><?php echo $deadline_vak; ?></p> 
+           
+                 </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php else: ?>
+                <ul class="comments__list"></ul>
+            <?php endif; ?>
+                        <div id="taak">
+            <h5>Comment plaatsen</h5>
+            <form action="" method="post">
+            <div class="form-group">
+                <input type="text" name="comment" placeholder="Schrijf een comment" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="action" value="addComment">
+                <input type="submit" class="btn btn-warning form--addComment__btn" name="btnAddComment" value="Plaats een comment" />
+            </div>
+                    <?php if(isset($error)): ?>
+        <div class="error">
+            <?php echo $error; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if(isset($succes)): ?>
+        <div class="feedback">
+            <?php echo $succes; ?>
+        </div>
+        <?php endif; ?>
+        </form>
+    </div>
+        </div>
         </div>
 
     </div>

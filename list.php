@@ -90,9 +90,13 @@
                 <h5>Naam taak</h5>
                 <?php if(count($allTasks) > 0):?>
             <ul class="comments__list">
-                <?php foreach( $allTasks as $item): ?>
+                <?php foreach( $allTasks as $row): ?>
+                <?php
+                $deadline_id = $row['deadline_id'];
+                $deadline_name = $row['titel'];
+                ?>
                 <li class="comments__list__item">
-                     <a href="taak.php?taak=<?php echo $item ?>"><?php echo $item ?></a> 
+                     <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
            
                  </li>
                 <?php endforeach; ?>

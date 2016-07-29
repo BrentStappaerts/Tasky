@@ -1,0 +1,29 @@
+
+#rightForm input[type='submit']{
+	background-color: transparent;
+	color: #f0ad4e;
+	border: solid 1px;
+	border-radius: 3px;
+	font-weight: bold;
+
+}
+
+#rightForm input[type='submit']:hover{
+	background-color: transparent;
+	color: #f91d0d;
+	text-decoration: none;
+	border: solid 1px;
+	border-radius: 3px;
+	font-weight: bold;
+
+}
+
+#rightForm #inlog{
+	margin-bottom: 10px;
+	font-family: 'Cuprum', serif;
+}
+#rightForm #geenAccount{
+	color: black;
+	font-size: 10px;
+	font-family: 'Cuprum', serif;
+}

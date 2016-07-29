@@ -30,6 +30,7 @@ if(!empty($_POST)){
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>
 <body>
 <div class="form--register">
@@ -37,6 +38,7 @@ if(!empty($_POST)){
         <img src="public/images/TaskyLogo.png" width="100%" />
     </div>
     <div class="col-sm-5 .col-md-6" id="rightForm">
+        <p id="inlog">Inloggen bij <strong>Tasky</strong></p>
         <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="email" placeholder="Email" />
@@ -46,9 +48,10 @@ if(!empty($_POST)){
             </div>
             <div class="form-group">
                 <input type="hidden" name="action" value="inloggen">
-                <input type="submit" class="btn btn-warning form--login__btn" name="btnLogin" value="Inloggen" />
+                <input type="submit" class="btn form--login__btn" name="btnLogin" value="Inloggen" />
             </div>
         </form>
+        <a href="register.php" id="geenAccount">Ik heb nog geen account op Tasky?</a>
     </div>
 </div>
 

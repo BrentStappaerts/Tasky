@@ -15,10 +15,34 @@
     margin-right: auto;
     margin-left: auto;
     background-image: url("../images/transparant.png"); } }
+#rightForm input[type='submit'] {
+  background-color: transparent;
+  color: #f0ad4e;
+  border: solid 1px;
+  border-radius: 3px;
+  font-weight: bold; }
+
+#rightForm input[type='submit']:hover {
+  background-color: transparent;
+  color: #f91d0d;
+  text-decoration: none;
+  border: solid 1px;
+  border-radius: 3px;
+  font-weight: bold; }
+
+#rightForm #inlog {
+  margin-bottom: 10px;
+  font-family: 'Cuprum', serif; }
+
+#rightForm #geenAccount {
+  color: black;
+  font-size: 10px;
+  font-family: 'Cuprum', serif; }
+
 @media only screen and (min-width: 800px) {
   #leftbalk {
     width: 20%;
-    background-color: red; }
+    background-image: url("../images/transparant2.png"); }
 
   #leftbalk img {
     width: 100%;
@@ -35,32 +59,43 @@
     margin-top: 20px; }
 
   .comments__list__item a {
-    color: white; }
+    color: black; }
 
   .comments__list__item a:hover {
     text-decoration: none; }
 
   #home {
     width: 80%;
-    background-color: blue; }
+    background-image: url("../images/transparant3.png"); }
 
-  nav {
-    background-color: yellow;
-    width: 90%;
-    height: 80px;
-    margin-right: auto;
-    margin-left: auto; }
+  #verwijderen a {
+    font-family: 'Cuprum', serif;
+    font-size: 16px; }
 
-  nav a {
-    font-size: 20px;
-    float: right;
-    color: black;
+  #verwijderen input[type='submit'] {
+    background-color: transparent;
+    color: #f0ad4e;
+    border: solid 1px;
+    border-radius: 3px;
+    font-weight: bold; }
+
+  #verwijderen input[type='submit']:hover {
+    background-color: transparent;
+    color: #f91d0d;
     text-decoration: none;
-    padding-right: 30px;
-    padding-top: 30px; }
+    border: solid 1px;
+    border-radius: 3px;
+    font-weight: bold; }
 
-  nav a:hover {
-    text-decoration: none; }
+  #verwijderen {
+    margin-bottom: 20px; }
+
+  #home li {
+    list-style-type: none; }
+
+  #home h3 {
+    font-family: 'Cuprum', serif;
+    font-size: 20px; }
 
   #timeline {
     margin-top: 1px;
@@ -73,6 +108,33 @@
 #taak h5 {
   font-size: 20px; }
 
+#rightForm p {
+  font-family: 'Cuprum', serif;
+  font-size: 16px; }
+
+#rightForm .Login {
+  color: #f0ad4e;
+  padding: 5px;
+  border: solid 1px;
+  border-radius: 3px;
+  font-weight: bold; }
+
+#rightForm .Register {
+  color: #f0ad4e;
+  padding: 5px;
+  border: solid 1px;
+  border-radius: 3px;
+  margin-left: 15px;
+  font-weight: bold; }
+
+#rightForm .Login:hover {
+  color: #f91d0d;
+  text-decoration: none; }
+
+#rightForm .Register:hover {
+  color: #f91d0d;
+  text-decoration: none; }
+
 body {
   display: block;
   width: 100vw;
@@ -81,5 +143,23 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 10vh; }
+
+nav {
+  width: 90%;
+  height: 80px;
+  margin-right: auto;
+  margin-left: auto; }
+
+nav a {
+  font-family: 'Cuprum', serif;
+  font-size: 18px;
+  float: right;
+  color: black;
+  text-decoration: none;
+  padding-right: 30px;
+  padding-top: 30px; }
+
+nav a:hover {
+  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

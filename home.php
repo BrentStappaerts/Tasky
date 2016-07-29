@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>
 <body>
     <?php include 'nav.inc.php'; ?></div>
@@ -53,6 +54,7 @@
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
+            <h3>Mijn lijsten</h3>
             <?php if(count($allLists) > 0):?>
             <ul class="comments__list">
                 <?php foreach($allLists as $row): ?>
@@ -61,11 +63,18 @@
                 $list_name = $row['name'];
                 ?>
                 <li class="comments__list__item">
-                     <a href="list.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
-                     <form action="" method="post">
-                         <input type="hidden" name="deleteListID" value="<?php echo $list_id; ?>">
-                         <input type="submit" name="btnDeleteList" value="Verwijder deze lijst">
-                    </form>             
+                    <div id="verwijderen">
+                        <div class="col-sm-5 .col-md-6">
+                             <a href="list.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
+                        </div>
+                        <div class="col-sm-5 .col-md-6">
+                             <form action="" method="post">
+                                <input type="hidden" name="deleteListID" value="<?php echo $list_id; ?>">
+                                <input type="submit" name="btnDeleteList" value="Verwijder deze lijst">
+                             </form> 
+                        </div> 
+                    </br>
+                    </div>           
                  </li>
                 <?php endforeach; ?>
             </ul>

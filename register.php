@@ -32,6 +32,7 @@ if(!empty($_POST)){
         <img src="public/images/TaskyLogo.png" width="100%" />
     </div>
     <div class="col-sm-5 .col-md-6" id="rightForm">
+        <p id="inlog">Registreren bij <strong>Tasky</strong></p>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Full name" />
@@ -47,6 +48,7 @@ if(!empty($_POST)){
                 <input type="submit" class="btn btn-warning form--login__btn"  name="btnSignup" value="Registreren" />
             </div>
         </form>
+        <a href="login.php" id="geenAccount">Ik heb al een account op Tasky</a>
     </div>
 </div>
 

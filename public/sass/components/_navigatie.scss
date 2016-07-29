@@ -1,0 +1,18 @@
+nav{
+	width: 90%;
+	height: 80px;
+	margin-right: auto;
+	margin-left: auto;
+}
+nav a{
+	font-family: 'Cuprum', serif;
+	font-size: 18px;
+	float: right;
+	color: black;
+	text-decoration: none;
+	padding-right: 30px;
+	padding-top: 30px;
+}
+nav a:hover {
+	text-decoration: none;
+}
