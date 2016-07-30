@@ -42,6 +42,7 @@
 @media only screen and (min-width: 800px) {
   #leftbalk {
     width: 20%;
+    height: 620px;
     background-image: url("../images/transparant2.png"); }
 
   #leftbalk img {
@@ -66,6 +67,7 @@
 
   #home {
     width: 80%;
+    height: 620px;
     background-image: url("../images/transparant3.png"); }
 
   #verwijderen a {
@@ -106,7 +108,29 @@
   margin-top: 100px; }
 
 #taak h5 {
-  font-size: 20px; }
+  font-size: 20px;
+  font-family: 'Cuprum', serif; }
+
+#taken a {
+  font-family: 'Cuprum', serif;
+  font-size: 16px; }
+
+#taken {
+  margin-bottom: 20px; }
+
+#taak input[type='submit'] {
+  background-color: transparent;
+  color: black;
+  border: solid 1px;
+  border-radius: 3px; }
+
+#taak input[type='submit']:hover {
+  background-color: transparent;
+  color: #f91d0d;
+  text-decoration: none;
+  border: solid 1px;
+  border-radius: 3px;
+  font-weight: bold; }
 
 #rightForm p {
   font-family: 'Cuprum', serif;
@@ -134,6 +158,21 @@
 #rightForm .Register:hover {
   color: #f91d0d;
   text-decoration: none; }
+
+#lijsten input[type='submit'] {
+  background-color: transparent;
+  color: #f0ad4e;
+  border: solid 1px;
+  border-radius: 3px;
+  font-weight: bold; }
+
+#lijsten input[type='submit']:hover {
+  background-color: transparent;
+  color: #f91d0d;
+  text-decoration: none;
+  border: solid 1px;
+  border-radius: 3px;
+  font-weight: bold; }
 
 body {
   display: block;

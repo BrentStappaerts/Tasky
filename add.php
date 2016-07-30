@@ -39,13 +39,10 @@
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>
 <body>
-    <nav>
-    <img src="public/images/TaskyLogo.png" width="10%" />
-    <a href="logout.php">Uitloggen</a>
-    <a href="add.php">Toevoegen</a>
-    </nav>
+<?php include 'nav.inc.php'; ?></div>
     <div id="timeline">
         <div class="col-sm-5 .col-md-6" id="leftbalk">
             <img src="public/images/profile.png"/>
@@ -57,16 +54,18 @@
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-            <h4>Lijst toevoegen</h4>
+            <div id="lijsten">
+            <h3>Nieuwe lijst toevoegen</h3>
             <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Naam lijst" />
             </div>
             <div class="form-group">
                 <input type="hidden" name="action" value="add">
-                <input type="submit" class="btn btn-warning form--add__btn" name="btnAdd" value="Add" />
+                <input type="submit" class="btn btn-warning form--add__btn" name="btnAdd" value="Toevoegen" />
             </div>
         </form>
+    </div>
 
 
         <?php if(isset($error)): ?>

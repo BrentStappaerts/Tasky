@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>
 <body>
     <?php include 'nav.inc.php'; ?></div>
@@ -87,7 +88,7 @@
     </div>
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-                <h5>Naam taak</h5>
+                <h3>Mijn taken</h3>
                 <?php if(count($allTasks) > 0):?>
             <ul class="comments__list">
                 <?php foreach( $allTasks as $row): ?>
@@ -96,8 +97,9 @@
                 $deadline_name = $row['titel'];
                 ?>
                 <li class="comments__list__item">
+                    <div id="taken">
                      <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
-           
+                    </div>
                  </li>
                 <?php endforeach; ?>
             </ul>
