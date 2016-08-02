@@ -19,7 +19,6 @@
 
     $lijst = new Lijst();
     $allLists = $lijst->getAll();
-    //print_r($allLists);
 
     if(isset($_POST['btnDeleteList'])) {
         $lijst = new Lijst();

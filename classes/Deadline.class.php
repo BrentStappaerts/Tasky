@@ -70,18 +70,21 @@ class Deadline {
         }
     }
     public function getAll(){
+            $listID = $_GET['list'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE userID = :userID");
+            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE userID = :userID AND listID = :listID");
             $statement->bindParam(":userID", $_SESSION['user_id']);
+            $statement->bindParam(":listID", $listID);
             $statement->execute();
             $allTasks = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $allTasks;
     }
 
     public function getTask(){
+            $deadlineID = $_GET['Task'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("SELECT * FROM deadlines");
-            $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
+            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE deadline_id = :deadlineID");
+            $statement->bindValue(":deadlineID", $deadlineID);
             $statement->execute();
             $oneTask = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $oneTask;

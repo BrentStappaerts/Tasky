@@ -16,8 +16,10 @@
     else {
         header('Location: index.php');
     }
+
     $deadline = new Deadline();
-    
+    $allTasks = $deadline->getAll();
+
     if(!empty($_POST)) {
         try {
             $deadline->Titel = $_POST["titel"];
@@ -29,8 +31,8 @@
             $error = $e->getMessage();
         }
     }
-    $deadline = new Deadline();
-    $allTasks = $deadline->getAll();
+
+    
 
 
 
@@ -67,7 +69,7 @@
                 <input type="text" name="vak" placeholder="Vak" />
             </div>
             <div class="form-group">
-                <input type="text" name="datum" placeholder="Datum" />
+                <input type="date" name="datum" placeholder="Datum" />
             </div>
             <div class="form-group">
                 <input type="hidden" name="action" value="addTaak">
