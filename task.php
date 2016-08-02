@@ -16,21 +16,24 @@
     else {
         header('Location: index.php');
     }
+
+    $deadline = new Deadline();
+    $oneTask = $deadline->getTask();
+
     $comment = new Comment();
-    
+    $comments = $comment->getAll();
+
     if(!empty($_POST)) {
         try {
+            
             $comment->Comment = $_POST["comment"];
+            $comment->CommentUsername = $_POST["username"];
             $comment->Add();
-            $succes = "Comment succesvol toegevoegd!";
+            $comments = $comment->getAll();
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
     }
-    $deadline = new Deadline();
-    $oneTask = $deadline->getTask();
-
-
 
 ?><!doctype html>
 <html lang="en">
@@ -42,6 +45,7 @@
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>
 <body>
     <?php include 'nav.inc.php'; ?></div>
@@ -57,7 +61,7 @@
 
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-                <h5>Naam taak</h5>
+                <h3>Taak</h3>
                 <?php if(count($oneTask) > 0):?>
             <ul class="comments__list">
                 <?php foreach( $oneTask as $row): ?>
@@ -65,25 +69,28 @@
                 $deadline_id = $row['deadline_id'];
                 $deadline_name = $row['titel'];
                 $deadline_vak = $row['vak'];
+                $deadline_date = $row['datum'];
                 ?>
                 <li class="comments__list__item">
-                     <p><?php echo $deadline_name; ?></p> 
-                     <p><?php echo $deadline_vak; ?></p> 
-           
+                    <div id="taakDetails">
+                     <p><strong>Titel: </strong> <?php echo $deadline_name; ?></p> 
+                     <p><strong>Vak: </strong> <?php echo $deadline_vak; ?></p> 
+                     <p><strong>Deadline: </strong> <?php echo $deadline_date; ?></p> 
+                    </div>
                  </li>
                 <?php endforeach; ?>
             </ul>
             <?php else: ?>
                 <ul class="comments__list"></ul>
             <?php endif; ?>
-                        <div id="taak">
-            <h5>Comment plaatsen</h5>
+            <div id="taak">
+            <h5>Comment op deze taak plaatsen</h5>
             <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="comment" placeholder="Schrijf een comment" />
             </div>
             <div class="form-group">
-                <input type="hidden" name="action" value="addComment">
+                <input type="hidden" name="username" value="<?php echo $userRow['name']; ?>">
                 <input type="submit" class="btn btn-warning form--addComment__btn" name="btnAddComment" value="Plaats een comment" />
             </div>
                     <?php if(isset($error)): ?>
@@ -98,6 +105,15 @@
         </div>
         <?php endif; ?>
         </form>
+
+        <?php foreach( $comments as $row): ?>
+        <?php 
+        $comment_text = $row['comment'];
+        $comment_username = $row['username'];
+        ?>
+        <p><strong><?php echo $comment_username; ?>:</strong> <?php echo $comment_text; ?></p>
+        <?php endforeach; ?>
+
     </div>
         </div>
         </div>

@@ -1,15 +1,32 @@
+#taakDetails{
+	 font-family: 'Cuprum', serif;
+	 font-size: 16px;
+}
+#taak{
 
-#lijsten input[type='submit']{
+	margin-top: 100px;
+}
+#taak h5{
+	font-size: 20px;
+	font-family: 'Cuprum', serif;
+}
+#taken a{
+	 font-family: 'Cuprum', serif;
+	 font-size: 16px;
+}
+#taken{
+	margin-bottom: 20px;
+}
+#taak input[type='submit']{
 	background-color: transparent;
 	color: #f0ad4e;
+	font-weight: bold;
 	border: solid 1px;
 	border-radius: 3px;
-	font-weight: bold;
 
 }
 
-
-#lijsten input[type='submit']:hover{
+#taak input[type='submit']:hover{
     background-color: transparent;
 	color: #f91d0d;
 	text-decoration: none;

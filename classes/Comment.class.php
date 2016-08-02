@@ -5,7 +5,7 @@ include_once "Db.class.php";
 class Comment
 {
 	private $m_sComment;
-    private $m_sCommentID;
+    private $m_sCommentUsername;
     
     public function __set($p_sProperty, $p_vValue)
     {
@@ -13,8 +13,8 @@ class Comment
             case "Comment":
                 $this->m_sComment = $p_vValue;
                 break;
-            case "CommentID":
-                $this->m_sCommentID = $p_vValue;
+            case "CommentUsername":
+                $this->m_sCommentUsername = $p_vValue;
                 break;
         }
     }
@@ -24,22 +24,36 @@ class Comment
             case "Comment":
                 return $this->m_sComment;
                 break;
-            case "CommentID":
-                return $this->m_sCommentID;
+            case "CommentUsername":
+                return $this->m_sCommentUsername;
                 break;
         }
     }
     public function Add() {
         if(!empty($this->m_sComment)){
+            $deadlineID = $_GET['Task'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("INSERT INTO comment (comment, userID) values (:comment, :userID)");
+            $statement = $PDO->prepare("INSERT INTO comments (comment, userID, username, deadlineID) values (:comment, :userID, :username, :deadlineID)");
             $statement->bindValue(":comment", $this->m_sComment);
-            $statement->bindParam(":userID", $_SESSION['user_id']);
+            $statement->bindValue(":userID", $_SESSION['user_id']);
+            $statement->bindValue(":username", $this->m_sCommentUsername);
+            $statement->bindValue(":deadlineID", $deadlineID);
             $statement->execute();
         }
         else {
             throw new Exception("Please fill in all fields");
         }
+    }
+
+    public function getAll(){
+        $deadlineID = $_GET['Task'];
+        $PDO = Db::getInstance();
+        $statement = $PDO->prepare("SELECT * FROM comments WHERE userID = :userID AND deadlineID = :deadlineID");
+        $statement->bindParam(":userID", $_SESSION['user_id']);
+        $statement->bindValue(":deadlineID", $deadlineID);
+        $statement->execute();
+        $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $comments;
     }
 
 
