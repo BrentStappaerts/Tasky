@@ -70,12 +70,14 @@
                 $deadline_name = $row['titel'];
                 $deadline_vak = $row['vak'];
                 $deadline_date = $row['datum'];
+                $daydifference = abs(floor((time() - strtotime($deadline_date))/(60*60*24)));
                 ?>
                 <li class="comments__list__item">
                     <div id="taakDetails">
                      <p><strong>Titel: </strong> <?php echo $deadline_name; ?></p> 
                      <p><strong>Vak: </strong> <?php echo $deadline_vak; ?></p> 
                      <p><strong>Deadline: </strong> <?php echo $deadline_date; ?></p> 
+                     <p><strong>Resterende dagen: </strong> <?php echo $daydifference ?></p> 
                     </div>
                  </li>
                 <?php endforeach; ?>

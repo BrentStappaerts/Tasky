@@ -27,13 +27,21 @@
             $deadline->Datum = $_POST["datum"];
             $deadline->Add();
             $succes = "Taak succesvol toegevoegd!";
+            $allTasks = $deadline->getAll();
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
     }
 
-    
+    $like = new Like();
 
+    if(!empty($_POST['btnLike'])){
+        try {
+            $deadline->Add();
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+    }
 
 
 ?><!doctype html>
@@ -93,14 +101,25 @@
                 <h3>Mijn taken</h3>
                 <?php if(count($allTasks) > 0):?>
             <ul class="comments__list">
-                <?php foreach( $allTasks as $row): ?>
+                <?php foreach( $allTasks as $row): ?>  
                 <?php
                 $deadline_id = $row['deadline_id'];
+                $deadline_date = $row['datum'];
+                $daydifference = abs(floor((time() - strtotime($deadline_date))/(60*60*24)));
                 $deadline_name = $row['titel'];
                 ?>
                 <li class="comments__list__item">
                     <div id="taken">
-                     <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
+                        <div class="col-sm-5 .col-md-6" id="taakT">
+                            <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
+                            <p><span><?php echo $daydifference . " dagen restrerend"; ?></span></p>
+                        </div>
+                        <div class="col-sm-5 .col-md-6">
+                          <form action='' method='post'>
+                            <input type='submit' id='btnLike' value='' name='btnLike' class='like'>
+                            <input name='likeLikeID' id='likeLikeID' type='hidden' value=''>
+                          </form>
+                        </div>
                     </div>
                  </li>
                 <?php endforeach; ?>
