@@ -24,6 +24,7 @@
             $lijst->Name = $_POST["name"];
             $lijst->Add();
             $succes = "Lijst succesvol toegevoegd!";
+            header('Location: home.php');
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
