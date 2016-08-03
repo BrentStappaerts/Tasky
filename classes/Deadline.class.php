@@ -72,7 +72,7 @@ class Deadline {
     public function getAll(){
             $listID = $_GET['list'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE userID = :userID AND listID = :listID");
+            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE userID = :userID AND listID = :listID ORDER BY datum ASC");
             $statement->bindParam(":userID", $_SESSION['user_id']);
             $statement->bindParam(":listID", $listID);
             $statement->execute();
