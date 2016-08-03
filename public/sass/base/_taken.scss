@@ -23,9 +23,7 @@
 	font-weight: bold;
 	border: solid 1px;
 	border-radius: 3px;
-
 }
-
 #taak input[type='submit']:hover{
     background-color: transparent;
 	color: #f91d0d;
@@ -33,5 +31,9 @@
 	border: solid 1px;
 	border-radius: 3px;
 	font-weight: bold;
-
+}
+#taken p span {
+	color: red;
+	font-size: 12px;
+	font-family: 'Cuprum', serif;
 }

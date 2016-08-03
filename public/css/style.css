@@ -119,6 +119,28 @@
   border-radius: 3px;
   font-weight: bold; }
 
+#taken {
+  margin-bottom: 20px;
+  width: 100%;
+  float: left; }
+
+.like {
+  border: none;
+  background-image: url(../images/todo.png);
+  background-color: transparent;
+  outline: none;
+  display: block;
+  height: 30px;
+  width: 80px;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  background-position: center;
+  transition: background-image 0.5s ease-in;
+  background-size: 90%; }
+
+.like:hover {
+  background-image: url(../images/done.png); }
+
 #rightForm p {
   font-family: 'Cuprum', serif;
   font-size: 16px; }
@@ -178,6 +200,11 @@
   border: solid 1px;
   border-radius: 3px;
   font-weight: bold; }
+
+#taken p span {
+  color: red;
+  font-size: 12px;
+  font-family: 'Cuprum', serif; }
 
 body {
   display: block;
