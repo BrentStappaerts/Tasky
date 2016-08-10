@@ -96,6 +96,23 @@ class Deadline {
         $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
         $statement->execute();
     }
+
+    public function deleteTask(){
+        $PDO = Db::getInstance();
+        $statement = $PDO->prepare("DELETE FROM deadlines WHERE deadline_id = :deadlineID");
+        $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
+        $statement->execute();
+    }
+
+    public function updateTask(){
+        $PDO = Db::getInstance();
+        $statement = $PDO->prepare("UPDATE deadlines SET titel = :titel, vak = :vak, datum = :datum WHERE deadline_id = :deadlineID");
+        $statement->bindparam(":titel", $m_sTitel);
+        $statement->bindparam(":vak", $m_sVak);
+        $statement->bindparam(":datum", $m_iDatum);
+        $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
+        $statement->execute();
+    }
 }
 ?>
 

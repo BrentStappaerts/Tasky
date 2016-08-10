@@ -26,24 +26,10 @@
 }
 
 .done{
-	border: none;
-	background-image: url(../images/todo.png);
-	background-color: transparent;
-	outline: none;
-	display: block;
-	height: 30px;
-	width: 80px;
-	background-repeat: no-repeat;
-	margin-right: 10px;
+	background: transparant;
+	background-color: black;
 
-	background-position: center;
-	transition: background-image 0.5s ease-in;
-	background-size: 90%;
 }
 .done1{
 text-decoration: line-through;
-}
-
-.done:hover{
-	background-image: url(../images/done.png);
 }

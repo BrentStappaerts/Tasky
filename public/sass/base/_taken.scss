@@ -37,3 +37,17 @@
 	font-size: 12px;
 	font-family: 'Cuprum', serif;
 }
+#taskMenu input[type='submit']{
+	background-color: transparent;
+	color: #f0ad4e;
+	border: solid 1px;
+	border-radius: 3px;
+	width: 100%;
+}
+#taskMenu input[type='submit']:hover{
+	background-color: transparent;
+	color: #f91d0d;
+	border: solid 1px;
+	border-radius: 3px;
+	width: 100%;
+}

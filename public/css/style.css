@@ -125,24 +125,11 @@
   float: left; }
 
 .done {
-  border: none;
-  background-image: url(../images/todo.png);
-  background-color: transparent;
-  outline: none;
-  display: block;
-  height: 30px;
-  width: 80px;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  background-position: center;
-  transition: background-image 0.5s ease-in;
-  background-size: 90%; }
+  background: transparant;
+  background-color: black; }
 
 .done1 {
   text-decoration: line-through; }
-
-.done:hover {
-  background-image: url(../images/done.png); }
 
 #rightForm p {
   font-family: 'Cuprum', serif;
@@ -208,6 +195,20 @@
   color: red;
   font-size: 12px;
   font-family: 'Cuprum', serif; }
+
+#taskMenu input[type='submit'] {
+  background-color: transparent;
+  color: #f0ad4e;
+  border: solid 1px;
+  border-radius: 3px;
+  width: 100%; }
+
+#taskMenu input[type='submit']:hover {
+  background-color: transparent;
+  color: #f91d0d;
+  border: solid 1px;
+  border-radius: 3px;
+  width: 100%; }
 
 body {
   display: block;

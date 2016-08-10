@@ -39,6 +39,17 @@
         $allTasks = $deadline->getAll();
     }
 
+    if(isset($_POST['btnDeleteTask'])) {
+        $deadline->DeadlineID = $_POST["deleteDeadlineID"];
+        $result = $deadline->deleteTask();
+        $allTasks = $deadline->getAll();
+    }
+
+    if(isset($_POST['btnUpdateTask'])) {
+        $deadline->DeadlineID = $_POST["updateDeadlineID"];
+        $result = $deadline->updateTask();
+    }
+
 
 ?><!doctype html>
 <html lang="en">
@@ -111,11 +122,25 @@
                             <a href="task.php?Task=<?php echo $deadline_id; ?>" class="done<?php echo $deadline_done; ?>"><?php echo $deadline_name; ?></a> 
                             <p><span><?php echo $daydifference . " dagen resterend"; ?></span></p>
                         </div>
-                        <div class="col-sm-5 .col-md-6">
+                        <div class="col-sm-5 .col-md-6" id="taskMenu">
+                            <div class="col-md-4">
                              <form action="" method="post">
                                 <input type="hidden" name="deadlineID" value="<?php echo $deadline_id; ?>">
-                                <input type="submit" name="btnDone" value="" class="done">
+                                <input type="submit" name="btnDone" value="Voltooien" class="done">
                              </form> 
+                            </div>
+                            <div class="col-md-4">
+                             <form action="" method="post">
+                                <input type="hidden" name="deleteDeadlineID" value="<?php echo $deadline_id; ?>">
+                                <input type="submit" name="btnDeleteTask" value="Verwijderen" >
+                             </form> 
+                            </div>
+                            <div class="col-md-4">
+                             <form action="" method="post">
+                                <input type="hidden" name="updateDeadlineID" value="<?php echo $deadline_id; ?>">
+                                <input type="submit" name="btnUpdateTask" value="Bewerken" >
+                             </form> 
+                            </div>
                         </div> 
                     </div>
                  </li>

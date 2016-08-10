@@ -23,7 +23,7 @@
     $comment = new Comment();
     $comments = $comment->getAll();
 
-    if(!empty($_POST)) {
+    if(!empty($_POST['btnAddComment'])) {
         try {
             
             $comment->Comment = $_POST["comment"];

@@ -24,7 +24,7 @@
         $lijst = new Lijst();
         $lijst->ListID = $_POST["deleteListID"];
         $result = $lijst->deleteList();
-         header('Location: home.php');
+        header('Location: home.php');
     }
 
  
