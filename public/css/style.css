@@ -124,7 +124,7 @@
   width: 100%;
   float: left; }
 
-.like {
+.done {
   border: none;
   background-image: url(../images/todo.png);
   background-color: transparent;
@@ -138,7 +138,10 @@
   transition: background-image 0.5s ease-in;
   background-size: 90%; }
 
-.like:hover {
+.done1 {
+  text-decoration: line-through; }
+
+.done:hover {
   background-image: url(../images/done.png); }
 
 #rightForm p {

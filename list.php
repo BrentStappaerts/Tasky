@@ -20,7 +20,7 @@
     $deadline = new Deadline();
     $allTasks = $deadline->getAll();
 
-    if(!empty($_POST)) {
+    if(!empty($_POST['btnAddTaak'])) {
         try {
             $deadline->Titel = $_POST["titel"];
             $deadline->Vak = $_POST["vak"];
@@ -33,14 +33,10 @@
         }
     }
 
-    $like = new Like();
-
-    if(!empty($_POST['btnLike'])){
-        try {
-            $deadline->Add();
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-        }
+    if(isset($_POST['btnDone'])) {
+        $deadline->DeadlineID = $_POST["deadlineID"];
+        $deadline->done();
+        $allTasks = $deadline->getAll();
     }
 
 
@@ -107,19 +103,20 @@
                 $deadline_date = $row['datum'];
                 $daydifference = abs(floor((time() - strtotime($deadline_date))/(60*60*24)));
                 $deadline_name = $row['titel'];
+                $deadline_done = $row['done'];
                 ?>
                 <li class="comments__list__item">
                     <div id="taken">
                         <div class="col-sm-5 .col-md-6" id="taakT">
-                            <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
-                            <p><span><?php echo $daydifference . " dagen restrerend"; ?></span></p>
+                            <a href="task.php?Task=<?php echo $deadline_id; ?>" class="done<?php echo $deadline_done; ?>"><?php echo $deadline_name; ?></a> 
+                            <p><span><?php echo $daydifference . " dagen resterend"; ?></span></p>
                         </div>
                         <div class="col-sm-5 .col-md-6">
-                          <form action='' method='post'>
-                            <input type='submit' id='btnLike' value='' name='btnLike' class='like'>
-                            <input name='likeLikeID' id='likeLikeID' type='hidden' value=''>
-                          </form>
-                        </div>
+                             <form action="" method="post">
+                                <input type="hidden" name="deadlineID" value="<?php echo $deadline_id; ?>">
+                                <input type="submit" name="btnDone" value="" class="done">
+                             </form> 
+                        </div> 
                     </div>
                  </li>
                 <?php endforeach; ?>

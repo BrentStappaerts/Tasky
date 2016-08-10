@@ -45,7 +45,7 @@ class Deadline {
                 return $this->m_iDatum;
                 break;
             case "DedlineID":
-                return $this->m_sDaedlineID;
+                return $this->m_sDeadlineID;
                 break;
             case "ListID":
                 return $this->m_sListID;
@@ -72,7 +72,7 @@ class Deadline {
     public function getAll(){
             $listID = $_GET['list'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE userID = :userID AND listID = :listID ORDER BY datum ASC");
+            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE userID = :userID AND listID = :listID AND datum > CURRENT_DATE() ORDER BY datum ASC");
             $statement->bindParam(":userID", $_SESSION['user_id']);
             $statement->bindParam(":listID", $listID);
             $statement->execute();
@@ -88,6 +88,13 @@ class Deadline {
             $statement->execute();
             $oneTask = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $oneTask;
+    }
+
+    public function done(){
+        $PDO = Db::getInstance();
+        $statement = $PDO->prepare("UPDATE deadlines SET done = 1 WHERE deadline_id = :deadlineID");
+        $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
+        $statement->execute();
     }
 }
 ?>
