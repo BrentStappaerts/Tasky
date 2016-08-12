@@ -91,27 +91,28 @@ class Deadline {
     }
 
     public function done(){
-        $PDO = Db::getInstance();
-        $statement = $PDO->prepare("UPDATE deadlines SET done = 1 WHERE deadline_id = :deadlineID");
-        $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
-        $statement->execute();
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("UPDATE deadlines SET done = 1 WHERE deadline_id = :deadlineID");
+            $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
+            $statement->execute();
     }
 
     public function deleteTask(){
-        $PDO = Db::getInstance();
-        $statement = $PDO->prepare("DELETE FROM deadlines WHERE deadline_id = :deadlineID");
-        $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
-        $statement->execute();
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("DELETE FROM deadlines WHERE deadline_id = :deadlineID");
+            $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
+            $statement->execute();
     }
 
     public function updateTask(){
-        $PDO = Db::getInstance();
-        $statement = $PDO->prepare("UPDATE deadlines SET titel = :titel, vak = :vak, datum = :datum WHERE deadline_id = :deadlineID");
-        $statement->bindparam(":titel", $m_sTitel);
-        $statement->bindparam(":vak", $m_sVak);
-        $statement->bindparam(":datum", $m_iDatum);
-        $statement->bindValue(":deadlineID", $this->m_sDeadlineID);
-        $statement->execute();
+            $deadlineID = $_GET['Task'];
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("UPDATE deadlines SET titel = :titel, vak = :vak, datum = :datum WHERE deadline_id = :deadlineID");
+            $statement->bindparam(":titel", $this->m_sTitel);
+            $statement->bindparam(":vak", $this->m_sVak);
+            $statement->bindparam(":datum", $this->m_iDatum);
+            $statement->bindValue(":deadlineID", $deadlineID);
+            $statement->execute();
     }
 }
 ?>

@@ -29,7 +29,7 @@
             $succes = "Taak succesvol toegevoegd!";
             $allTasks = $deadline->getAll();
         } catch (Exception $e) {
-            $error = $e->getMessage();
+            $error = "Taak niet correct toegevoegd";
         }
     }
 
@@ -45,10 +45,6 @@
         $allTasks = $deadline->getAll();
     }
 
-    if(isset($_POST['btnUpdateTask'])) {
-        $deadline->DeadlineID = $_POST["updateDeadlineID"];
-        $result = $deadline->updateTask();
-    }
 
 
 ?><!doctype html>
@@ -136,10 +132,9 @@
                              </form> 
                             </div>
                             <div class="col-md-4">
-                             <form action="" method="post">
-                                <input type="hidden" name="updateDeadlineID" value="<?php echo $deadline_id; ?>">
-                                <input type="submit" name="btnUpdateTask" value="Bewerken" >
-                             </form> 
+                                <div id="bewerkenTaak">
+                                    <a href="editedDeadline.php?Task=<?php echo $deadline_id ?>">Bewerken</a> 
+                                </div>
                             </div>
                         </div> 
                     </div>

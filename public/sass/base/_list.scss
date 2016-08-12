@@ -5,7 +5,6 @@
 	border: solid 1px;
 	border-radius: 3px;
 	font-weight: bold;
-
 }
 
 
@@ -16,7 +15,6 @@
 	border: solid 1px;
 	border-radius: 3px;
 	font-weight: bold;
-
 }
 
 #taken{
@@ -26,10 +24,33 @@
 }
 
 .done{
-	background: transparant;
 	background-color: black;
 
 }
 .done1{
 text-decoration: line-through;
+
 }
+#bewerkenTaak {
+	background-color: transparent;
+	border: solid 1px;
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	color: #f0ad4e;
+}
+#bewerkenTaak:hover {
+	background-color: transparent;
+	border: solid 1px;
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	color: #f91d0d;
+}
+#bewerkenTaak a{
+	color: #f0ad4e;
+}
+#bewerkenTaak a:hover{
+	color: #f91d0d;
+}
+
