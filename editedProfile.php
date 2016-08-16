@@ -46,7 +46,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasky | Homepage</title>
+    <title>Tasky | Profiel bewerken</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
@@ -71,7 +71,11 @@
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-            <h3>User info</h3>
+            <h3>Profiel</h3></br>
+
+            <p><strong>Naam: </strong><?php print($userRow['name']); ?> </p>
+            <p><strong>Email: </strong><?php print($userRow['email']); ?> </p></br>
+            <p><strong>Profiel foto toevoegen: </strong></p>
                 <div class="col-sm-5 .col-md-6">
                      <form action="" method="post" enctype="multipart/form-data">
                         <input type="file" name="image" id="image" accept="image/*">

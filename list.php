@@ -68,13 +68,17 @@
     <?php include 'nav.inc.php'; ?></div>
     <div id="timeline">
         <div class="col-sm-5 .col-md-6" id="leftbalk">
+            <?php if($userRow['user_image'] != ""): ?>
+            <img src="uploads/<?php echo $userRow['user_image']; ?>"/>
+            <?php else: ?>
             <img src="public/images/profile.png"/>
+            <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5>
+                <h5><?php print($userRow['name']); ?></h5></br>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href=""><img src="public/images/settings.png" /></a>
-            </div>  
+                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+        </div> 
             <div id="taak">
             <h5>Taak toevoegen aan de lijst</h5>
             <form action="" method="post">
@@ -92,10 +96,9 @@
                     <option value="geen">geen</option>
                     <?php endif; ?>
                 </select>
-                <!--<input type="text" name="vak" placeholder="Vak" />-->
             </div>
             <div class="form-group">
-                <input type="date" name="datum" placeholder="Datum" />
+                <input type="date" name="datum" placeholder="Deadline" />
             </div>
             <div class="form-group">
                 <input type="number" name="werkdruk" placeholder="Werkdruk" />
@@ -127,7 +130,7 @@
                     $totalValue = $totalValue + $oneValue;
                 }
                 ?>
-                <p>Deze lijst telt <?php  echo $totalValue; ?> werkuren</p>
+                <p>Deze lijst telt <strong><?php  echo $totalValue; ?> werkuren</strong></p>
                 <?php if(count($allTasks) > 0):?>
             <ul class="comments__list">
                 

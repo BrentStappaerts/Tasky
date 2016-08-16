@@ -49,13 +49,19 @@
  <?php include 'nav.inc.php'; ?></div>
     <div id="timeline">
         <div class="col-sm-5 .col-md-6" id="leftbalk">
+            <?php if($userRow['user_image'] != ""): ?>
+            <img src="uploads/<?php echo $userRow['user_image']; ?>"/>
+            <?php else: ?>
             <img src="public/images/profile.png"/>
+            <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5>
+                <h5><?php print($userRow['name']); ?></h5></br>
+                <a href="home.php">Mijn Lijsten</a>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href=""><img src="public/images/settings.png" /></a>
-            </div>   
+                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+            </div> 
+
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
             <h3>Taak bewerken</h3>
