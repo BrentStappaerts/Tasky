@@ -70,6 +70,7 @@
                 $deadline_name = $row['titel'];
                 $deadline_vak = $row['vak'];
                 $deadline_date = $row['datum'];
+                $deadline_werkdruk = $row['werkdruk'];
                 $daydifference = abs(floor((time() - strtotime($deadline_date))/(60*60*24)));
                 ?>
                 <li class="comments__list__item">
@@ -78,6 +79,7 @@
                      <p><strong>Vak: </strong> <?php echo $deadline_vak; ?></p> 
                      <p><strong>Deadline: </strong> <?php echo $deadline_date; ?></p> 
                      <p><strong>Resterende dagen: </strong> <?php echo $daydifference ?></p> 
+                     <p><strong>Aantal werkuren: </strong><?php echo $deadline_werkdruk ?></p>
                     </div>
                  </li>
                 <?php endforeach; ?>

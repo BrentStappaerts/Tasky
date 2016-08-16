@@ -25,6 +25,7 @@
             $deadline->Titel = $_POST["titel"];
             $deadline->Vak = $_POST["vak"];
             $deadline->Datum = $_POST["datum"];
+            $deadline->Werkdruk = $_POST["werkdruk"];
             $deadline->updateTask();
             header('Location: task.php?Task=' . $_GET['Task']);
         } catch (Exception $e){
@@ -66,6 +67,7 @@
                 $deadline_name = $row['titel'];
                 $deadline_vak = $row['vak'];
                 $deadline_date = $row['datum'];
+                $deadline_werkdruk = $row['werkdruk'];
                 ?>
                 <li class="comments__list__item">
                     <div id="taakDetails">
@@ -78,6 +80,9 @@
                             </div>
                             <div class="form-group">
                                 Datum deadline: <input type="date" name="datum" value="<?php echo $deadline_date ?>" />
+                            </div>
+                            <div class="form-group">
+                                Aantal werkuren: <input type="number" name="werkdruk" value="<?php echo $deadline_werkdruk ?>" />
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="updateDeadlineID" value="addTaak">

@@ -20,11 +20,13 @@
     $deadline = new Deadline();
     $allTasks = $deadline->getAll();
 
+
     if(!empty($_POST['btnAddTaak'])) {
         try {
             $deadline->Titel = $_POST["titel"];
             $deadline->Vak = $_POST["vak"];
             $deadline->Datum = $_POST["datum"];
+            $deadline->Werkdruk = $_POST["werkdruk"];
             $deadline->Add();
             $succes = "Taak succesvol toegevoegd!";
             $allTasks = $deadline->getAll();
@@ -83,6 +85,9 @@
                 <input type="date" name="datum" placeholder="Datum" />
             </div>
             <div class="form-group">
+                <input type="number" name="werkdruk" placeholder="Werkdruk" />
+            </div>
+            <div class="form-group">
                 <input type="hidden" name="action" value="addTaak">
                 <input type="submit" class="btn btn-warning form--addTaak__btn" name="btnAddTaak" value="Taak toevoegen" />
             </div>
@@ -102,8 +107,17 @@
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
                 <h3>Mijn taken</h3>
+                <?php 
+                $totalValue = 0;
+                foreach ($allTasks as $row) {
+                    $oneValue = $row['werkdruk'];
+                    $totalValue = $totalValue + $oneValue;
+                }
+                ?>
+                <p>Deze lijst telt <?php  echo $totalValue; ?> werkuren</p>
                 <?php if(count($allTasks) > 0):?>
             <ul class="comments__list">
+                
                 <?php foreach( $allTasks as $row): ?>  
                 <?php
                 $deadline_id = $row['deadline_id'];
@@ -114,6 +128,7 @@
                 ?>
                 <li class="comments__list__item">
                     <div id="taken">
+                        
                         <div class="col-sm-5 .col-md-6" id="taakT">
                             <a href="task.php?Task=<?php echo $deadline_id; ?>" class="done<?php echo $deadline_done; ?>"><?php echo $deadline_name; ?></a> 
                             <p><span><?php echo $daydifference . " dagen resterend"; ?></span></p>
