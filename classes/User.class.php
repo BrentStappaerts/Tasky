@@ -1,10 +1,13 @@
 <?php
 
 require_once('Db.class.php');
+
 class User {
+
     private $m_sEmail;
     private $m_sName;
     private $m_sPassword;
+    private $m_sImage;
     
     public function __set($p_sProperty, $p_vValue)
     {
@@ -17,6 +20,9 @@ class User {
                 break;
             case "Password":
                 $this->m_sPassword = $p_vValue;
+                break;
+            case "Image":
+                $this->m_sImage = $p_vValue;
                 break;
         }
     }
@@ -31,6 +37,9 @@ class User {
                 break;
             case "Password":
                 return $this->m_sPassword;
+                break;
+            case "Image":
+                return $this->m_sImage;
                 break;
         }
     }
@@ -77,5 +86,13 @@ class User {
     private function createSession($id) {
         session_start();
         $_SESSION["user_id"] = $id;
+    }
+
+    public function Upload() {
+        $PDO = Db::getInstance();                 
+        $stmt = $PDO->prepare("UPDATE users SET user_image = :user_image WHERE user_id = :user_id");
+        $stmt->bindParam(":user_image", $this->m_sImage);
+        $stmt->bindParam(":user_id", $_SESSION['user_id']);
+        $stmt->execute(); 
     }
 }
