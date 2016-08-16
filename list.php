@@ -17,6 +17,9 @@
         header('Location: index.php');
     }
 
+    $vak = new Vak();
+    $vakken = $vak->getAll();
+
     $deadline = new Deadline();
     $allTasks = $deadline->getAll();
 
@@ -79,7 +82,17 @@
                 <input type="text" name="titel" placeholder="Naam taak" />
             </div>
             <div class="form-group">
-                <input type="text" name="vak" placeholder="Vak" />
+                <select name="vak">
+                    <?php if(count($vakken) > 0):?>
+                        <?php foreach( $vakken as $row): ?> 
+                        <?php $vak_name = $row['vak_name']; ?>
+                        <option value="<?php echo $vak_name; ?>"><?php echo $vak_name; ?></option>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                    <option value="geen">geen</option>
+                    <?php endif; ?>
+                </select>
+                <!--<input type="text" name="vak" placeholder="Vak" />-->
             </div>
             <div class="form-group">
                 <input type="date" name="datum" placeholder="Datum" />

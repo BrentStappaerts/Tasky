@@ -9,6 +9,7 @@ class Deadline {
     private $m_iDatum;
     private $m_sDeadlineID;
     private $m_sListID;
+    private $m_sWerkdruk;
 
     
     public function __set($p_sProperty, $p_vValue)
@@ -28,6 +29,9 @@ class Deadline {
                 break;
             case "ListID":
                 $this->m_sListID = $p_vValue;
+                break;
+            case "Werkdruk":
+                $this->m_sWerkdruk = $p_vValue;
                 break;
         
         }
@@ -50,6 +54,9 @@ class Deadline {
             case "ListID":
                 return $this->m_sListID;
                 break;
+            case "Werkdruk":
+                return $this->m_sWerkdruk;
+                break;
         }
     }
 
@@ -57,12 +64,13 @@ class Deadline {
         if(!empty($this->m_sTitel) && !empty($this->m_sVak) && !empty($this->m_iDatum)){
             $listID = $_GET['list'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("INSERT INTO deadlines (titel, vak, datum, userID, listID) values (:titel, :vak, :datum, :userID, :listID)");
+            $statement = $PDO->prepare("INSERT INTO deadlines (titel, vak, datum, userID, listID, werkdruk) values (:titel, :vak, :datum, :userID, :listID, :werkdruk)");
             $statement->bindValue(":titel", $this->m_sTitel);
             $statement->bindValue(":vak", $this->m_sVak);
             $statement->bindParam(":datum", $this->m_iDatum);
             $statement->bindParam(":listID", $listID);
             $statement->bindParam(":userID", $_SESSION['user_id']);
+            $statement->bindValue(":werkdruk", $this->m_sWerkdruk);
             $statement->execute();
         }
         else {
@@ -107,11 +115,12 @@ class Deadline {
     public function updateTask(){
             $deadlineID = $_GET['Task'];
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("UPDATE deadlines SET titel = :titel, vak = :vak, datum = :datum WHERE deadline_id = :deadlineID");
+            $statement = $PDO->prepare("UPDATE deadlines SET titel = :titel, vak = :vak, datum = :datum, werkdruk = :werkdruk WHERE deadline_id = :deadlineID");
             $statement->bindparam(":titel", $this->m_sTitel);
             $statement->bindparam(":vak", $this->m_sVak);
             $statement->bindparam(":datum", $this->m_iDatum);
             $statement->bindValue(":deadlineID", $deadlineID);
+            $statement->bindValue(":werkdruk", $this->m_sWerkdruk);
             $statement->execute();
     }
 }
