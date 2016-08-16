@@ -78,16 +78,14 @@
     background-color: transparent;
     color: #f0ad4e;
     border: solid 1px;
-    border-radius: 3px;
-    font-weight: bold; }
+    border-radius: 3px; }
 
   #verwijderen input[type='submit']:hover {
     background-color: transparent;
     color: #f91d0d;
     text-decoration: none;
     border: solid 1px;
-    border-radius: 3px;
-    font-weight: bold; }
+    border-radius: 3px; }
 
   #verwijderen {
     margin-bottom: 20px; }
@@ -119,10 +117,17 @@
   border-radius: 3px;
   font-weight: bold; }
 
+#home p {
+  font-family: 'Cuprum', serif;
+  font-size: 16px; }
+
 #taken {
   margin-bottom: 20px;
   width: 100%;
   float: left; }
+
+#gegevens a {
+  color: black; }
 
 .done {
   background-color: black; }
@@ -184,7 +189,7 @@
   font-size: 16px; }
 
 #taak {
-  margin-top: 100px; }
+  margin-top: 70px; }
 
 #taak h5 {
   font-size: 20px;
@@ -199,10 +204,16 @@
 
 #taak input[type='submit'] {
   background-color: transparent;
-  color: #f0ad4e;
-  font-weight: bold;
+  color: black;
   border: solid 1px;
   border-radius: 3px; }
+
+#taak input[name='btnAddComment'] {
+  color: #f0ad4e; }
+
+#taak select {
+  width: 100%;
+  height: 30px; }
 
 #taak input[type='submit']:hover {
   background-color: transparent;
@@ -230,6 +241,22 @@
   border: solid 1px;
   border-radius: 3px;
   width: 100%; }
+
+#vakToevoegen {
+  margin-left: 15px;
+  margin-bottom: 50px; }
+
+#vakToevoegen input[type="submit"] {
+  background-color: transparent;
+  color: #f0ad4e;
+  border: solid 1px;
+  border-radius: 3px; }
+
+#vakToevoegen input[type="submit"]:hover {
+  background-color: transparent;
+  color: #f91d0d;
+  border: solid 1px;
+  border-radius: 3px; }
 
 body {
   display: block;

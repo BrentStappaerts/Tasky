@@ -1,0 +1,18 @@
+#vakToevoegen{
+	margin-left: 15px;	
+	margin-bottom: 50px;
+}
+
+#vakToevoegen input[type="submit"]{
+	background-color: transparent;
+    color: #f0ad4e;
+    border: solid 1px;
+    border-radius: 3px; 
+}
+
+#vakToevoegen input[type="submit"]:hover{
+	background-color: transparent;
+    color: #f91d0d;
+    border: solid 1px;
+    border-radius: 3px;  
+}
