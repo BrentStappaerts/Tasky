@@ -36,6 +36,7 @@
     <title>Tasky | Toevoegen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
+    <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
@@ -52,7 +53,6 @@
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
                 <h5><?php print($userRow['name']); ?></h5></br>
-                <a href="home.php">Mijn Lijsten</a>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
                 <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>

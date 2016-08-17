@@ -106,16 +106,14 @@
   background-color: transparent;
   color: #f0ad4e;
   border: solid 1px;
-  border-radius: 3px;
-  font-weight: bold; }
+  border-radius: 3px; }
 
 #lijsten input[type='submit']:hover {
   background-color: transparent;
   color: #f91d0d;
   text-decoration: none;
   border: solid 1px;
-  border-radius: 3px;
-  font-weight: bold; }
+  border-radius: 3px; }
 
 #home p {
   font-family: 'Cuprum', serif;
@@ -137,6 +135,7 @@
 
 #bewerkenTaak {
   background-color: transparent;
+  padding: 1px;
   border: solid 1px;
   border-radius: 3px;
   text-align: center;
@@ -233,14 +232,18 @@
   color: #f0ad4e;
   border: solid 1px;
   border-radius: 3px;
-  width: 100%; }
+  width: 100%;
+  font-family: 'Cuprum', serif;
+  font-size: 16px; }
 
 #taskMenu input[type='submit']:hover {
   background-color: transparent;
   color: #f91d0d;
   border: solid 1px;
   border-radius: 3px;
-  width: 100%; }
+  width: 100%;
+  font-family: 'Cuprum', serif;
+  font-size: 16px; }
 
 #vakToevoegen {
   margin-left: 15px;

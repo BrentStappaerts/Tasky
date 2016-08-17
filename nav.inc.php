@@ -9,4 +9,5 @@ if ($userRow['admin'] == 1) {
 	//do nothing
 }
 ?>
+<a href="home.php">Mijn Lijsten</a> 
 </nav>
