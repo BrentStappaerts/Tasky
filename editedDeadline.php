@@ -37,7 +37,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasky | Taak </title>
+    <title>Tasky | Taak bewerken </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon"/>
