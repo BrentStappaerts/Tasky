@@ -10,4 +10,5 @@ if ($userRow['admin'] == 1) {
 }
 ?>
 <a href="home.php">Mijn Lijsten</a> 
+<a href="lijsten.php">Gedeelde Lijsten</a> 
 </nav>

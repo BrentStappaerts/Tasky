@@ -1,4 +1,6 @@
 <?php
+$error = "";
+
 spl_autoload_register(function ($class_name) {
     include 'classes/' .$class_name . '.class.php';
 });
@@ -10,22 +12,17 @@ if(!empty($_POST)){
             $user->Email = $_POST["email"];
             $user->Password = $_POST["passwordLogin"];
             if($user->canLogin()){
-                try{
                     $_SESSION['loggedin'] = true;
                     header('Location: home.php');
-                } catch (Exception $e){
-                    $error = "Could not log you on";
-                }
-            
+            } else{
+                    $error = "Inloggegvens zijn niet correct.";
             }
-        }else{
-            echo "Please fill in all fields";
+        }
+        else{
+            $error = "Gelieve alle velden in te vullen.";
         }
     }
 }
-    
-
-
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -46,6 +43,7 @@ if(!empty($_POST)){
     </div>
     <div class="col-sm-5 .col-md-6" id="rightForm">
         <p id="inlog">Inloggen bij <strong>Tasky</strong></p>
+        <?php echo $error ?>
         <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="email" placeholder="Email" />

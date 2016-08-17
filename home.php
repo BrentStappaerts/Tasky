@@ -27,13 +27,19 @@
         header('Location: home.php');
     }
 
+    if(isset($_POST['btnDeelList'])) {
+        $lijst->ListID = $_POST["deelListID"];
+        $lijst->share();
+        header('Location: lijsten.php');
+    }
+
  
 
 ?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasky | Homepage</title>
+    <title>Tasky | Overzicht lijsten</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
@@ -72,14 +78,21 @@
                         <div class="col-sm-5 .col-md-6">
                              <a href="list.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
                         </div>
-                        <div class="col-sm-5 .col-md-6">
+                        <div class="col-sm-5 .col-md-6" id="taskMenu">
+                            <div class="col-md-4">
                              <form action="" method="post">
                                 <input type="hidden" name="deleteListID" value="<?php echo $list_id; ?>">
-                                <input type="submit" name="btnDeleteList" value="Verwijder deze lijst">
+                                <input type="submit" name="btnDeleteList" value="Verwijderen">
                              </form> 
+                            </div>
+                            <div class="col-md-4">
+                             <form action="" method="post">
+                                <input type="hidden" name="deelListID" value="<?php echo $list_id; ?>">
+                                <input type="submit" name="btnDeelList" value="Delen" >
+                             </form> 
+                            </div>
                         </div> 
-                    </br>
-                    </div>           
+                    </div>          
                  </li>
                 <?php endforeach; ?>
             </ul>

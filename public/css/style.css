@@ -31,7 +31,7 @@
   font-weight: bold; }
 
 #rightForm #inlog {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-family: 'Cuprum', serif; }
 
 #rightForm #geenAccount {
@@ -287,5 +287,9 @@ nav a {
 
 nav a:hover {
   text-decoration: none; }
+
+#logo {
+  float: left;
+  margin-left: 10px; }
 
 /*# sourceMappingURL=style.css.map */
