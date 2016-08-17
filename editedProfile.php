@@ -32,14 +32,17 @@
         $height = 250;
         $height = (int) (($width / $image_width) * $image_height);
         $image_p = imagecreatetruecolor($width, $height);
-        $image   = imagecreatefromjpeg($image_tmp_name);
+        if ($image_extension == "jpg") {
+            $image   = imagecreatefromjpeg($image_tmp_name);
+        } else if ($image_extension == "png") {
+            $image   = imagecreatefrompng($image_tmp_name); 
+        }
         imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $image_width, $image_height);
         imagejpeg($image_p, $path, 90);
 
         $user->Upload();
         header('Location: home.php');
     }
-
  
 
 ?><!doctype html>
