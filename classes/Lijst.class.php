@@ -49,10 +49,23 @@ class Lijst {
             $allLists = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $allLists;
     }
+    public function getSharedList(){
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("SELECT * FROM lists WHERE delen = 1");
+            $statement->execute();
+            $sharedList = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $sharedList;
+    }
 
     public function deleteList(){
             $PDO = Db::getInstance();
             $statement = $PDO->prepare("DELETE FROM lists WHERE list_id = :listID");
+            $statement->bindValue(":listID", $this->m_sListID);
+            $statement->execute();
+    }
+    public function share(){
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("UPDATE lists SET delen = 1 WHERE list_id = :listID");
             $statement->bindValue(":listID", $this->m_sListID);
             $statement->execute();
     }
