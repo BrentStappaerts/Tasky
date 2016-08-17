@@ -1,4 +1,5 @@
 <?php
+$error ="";
 spl_autoload_register(function ($class_name) {
     include 'classes/' .$class_name . '.class.php';
 });
@@ -13,6 +14,9 @@ if(!empty($_POST)){
             $user->Register();
             header('Location: login.php');
         }
+        else{
+            $error = "Gelieve alle velden correct in te vullen";
+        }
     }
 }
 ?><!doctype html>
@@ -26,6 +30,7 @@ if(!empty($_POST)){
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>
 <body>
 
@@ -35,6 +40,7 @@ if(!empty($_POST)){
     </div>
     <div class="col-sm-5 .col-md-6" id="rightForm">
         <p id="inlog">Registreren bij <strong>Tasky</strong></p>
+        <?php echo $error ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Full name" />
