@@ -38,6 +38,7 @@
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">
 </head>

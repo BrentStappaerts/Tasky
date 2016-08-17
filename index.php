@@ -13,6 +13,7 @@ if(isset($_SESSION['loggedin']) && isset($_SESSION['user_id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
+    <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon"/>
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cuprum">

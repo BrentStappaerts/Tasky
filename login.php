@@ -10,16 +10,22 @@ if(!empty($_POST)){
             $user->Email = $_POST["email"];
             $user->Password = $_POST["passwordLogin"];
             if($user->canLogin()){
-                $_SESSION['loggedin'] = true;
-                header('Location: home.php');
-            }  else {
-                echo"Could not log you on";
+                try{
+                    $_SESSION['loggedin'] = true;
+                    header('Location: home.php');
+                } catch (Exception $e){
+                    $error = "Could not log you on";
+                }
+            
             }
         }else{
             echo "Please fill in all fields";
         }
     }
 }
+    
+
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -27,6 +33,7 @@ if(!empty($_POST)){
     <title>Tasky | Inloggen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
+    <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
     <script src="public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="public/css/style.css" type="text/css">
