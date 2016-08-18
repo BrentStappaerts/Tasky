@@ -45,7 +45,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tasky | Homepage</title>
+    <title>Tasky | Vakken</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="public/js/jquery-2.2.3.min.js"></script>
     <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon"/>
@@ -64,10 +64,10 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
@@ -89,8 +89,8 @@
                     <div id="verwijderen"> 
                         <div class="col-sm-5 .col-md-6">
                             <form action="" method="post">
-                                <input name="updateVakID" value="<?php echo $vak_id; ?>" hidden>
-                                <input name="updateVak" value="<?php echo $vak_name; ?>">
+                                <input name="updateVakID" value="<?php echo htmlspecialchars($vak_id); ?>" hidden>
+                                <input name="updateVak" value="<?php echo htmlspecialchars($vak_name); ?>">
                                 <input type="submit" name="btnUpdateVak" value="Bijwerken">
                             </form>
                         </div>
@@ -98,7 +98,7 @@
                         <div id="verwijderen">
                         <div class="col-sm-5 .col-md-6">
                              <form action="" method="post">
-                                <input type="hidden" name="deleteVakID" value="<?php echo $vak_id; ?>">
+                                <input type="hidden" name="deleteVakID" value="<?php echo htmlspecialchars($vak_id); ?>">
                                 <input type="submit" name="btnDeleteVak" value="Vak verwijderen">
                              </form> 
                         </div> 

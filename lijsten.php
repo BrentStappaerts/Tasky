@@ -50,10 +50,10 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
@@ -69,7 +69,7 @@
 
                 <li class="comments__list__item">
                         <div class="col-sm-5 .col-md-6" id="GedeeldeLijsten">
-                              <a href="shared.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
+                              <a href="shared.php?list=<?php echo htmlspecialchars($list_id) ?>"><?php echo htmlspecialchars($list_name); ?></a> 
                         </div>
                                  
                  </li>

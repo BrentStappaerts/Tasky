@@ -56,10 +56,10 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5></br>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5></br>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
             </div> 
 
         </div>
@@ -79,16 +79,16 @@
                     <div id="taakDetails">
                         <form action="" method="post">
                             <div class="form-group">
-                               Titel: <input type="text" name="titel" value="<?php echo $deadline_name ?>" />
+                               Titel: <input type="text" name="titel" value="<?php echo htmlspecialchars($deadline_name) ?>" />
                             </div>
                             <div class="form-group">
-                                Vak: <input type="text" name="vak" value="<?php echo $deadline_vak ?>" />
+                                Vak: <input type="text" name="vak" value="<?php echo htmlspecialchars($deadline_vak) ?>" />
                             </div>
                             <div class="form-group">
-                                Datum deadline: <input type="date" name="datum" value="<?php echo $deadline_date ?>" />
+                                Datum deadline: <input type="date" name="datum" value="<?php echo htmlspecialchars($deadline_date) ?>" />
                             </div>
                             <div class="form-group">
-                                Aantal werkuren: <input type="number" name="werkdruk" value="<?php echo $deadline_werkdruk ?>" />
+                                Aantal werkuren: <input type="number" name="werkdruk" value="<?php echo htmlspecialchars($deadline_werkdruk) ?>" />
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="updateDeadlineID" value="addTaak">

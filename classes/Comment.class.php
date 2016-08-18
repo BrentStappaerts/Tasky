@@ -48,8 +48,7 @@ class Comment
     public function getAll(){
         $deadlineID = $_GET['Task'];
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("SELECT * FROM comments WHERE userID = :userID AND deadlineID = :deadlineID");
-        $statement->bindParam(":userID", $_SESSION['user_id']);
+        $statement = $PDO->prepare("SELECT * FROM comments WHERE deadlineID = :deadlineID");
         $statement->bindValue(":deadlineID", $deadlineID);
         $statement->execute();
         $comments = $statement->fetchAll(PDO::FETCH_ASSOC);

@@ -75,10 +75,10 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5></br>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5></br>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
         </div> 
             <div id="taak">
             <h5>Taak toevoegen aan de lijst</h5>
@@ -91,7 +91,7 @@
                     <?php if(count($vakken) > 0):?>
                         <?php foreach( $vakken as $row): ?> 
                         <?php $vak_name = $row['vak_name']; ?>
-                        <option value="<?php echo $vak_name; ?>"><?php echo $vak_name; ?></option>
+                        <option value="<?php echo htmlspecialchars($vak_name); ?>"><?php echo htmlspecialchars($vak_name); ?></option>
                         <?php endforeach; ?>
                         <option value="Overige">Overige</option>
                     <?php else: ?>
@@ -131,7 +131,7 @@
                     $totalValue = $totalValue + $oneValue;
                 }
                 ?>
-                <p>Deze lijst telt <strong><?php  echo $totalValue; ?> werkuren</strong></p>
+                <p>Deze lijst telt <strong><?php  echo htmlspecialchars($totalValue); ?> werkuren</strong></p>
                 <?php if(count($allTasks) > 0):?>
             <ul class="comments__list">
                 
@@ -147,25 +147,25 @@
                     <div id="taken">
                         
                         <div class="col-sm-5 .col-md-6" id="taakT">
-                            <a href="task.php?Task=<?php echo $deadline_id; ?>" class="done<?php echo $deadline_done; ?>"><?php echo $deadline_name; ?></a> 
+                            <a href="task.php?Task=<?php echo htmlspecialchars($deadline_id); ?>" class="done<?php echo htmlspecialchars($deadline_done); ?>"><?php echo htmlspecialchars($deadline_name); ?></a> 
                             <p><span><?php echo $daydifference . " dagen resterend"; ?></span></p>
                         </div>
                         <div class="col-sm-5 .col-md-6" id="taskMenu">
                             <div class="col-md-4">
                              <form action="" method="post">
-                                <input type="hidden" name="deadlineID" value="<?php echo $deadline_id; ?>">
+                                <input type="hidden" name="deadlineID" value="<?php echo htmlspecialchars($deadline_id); ?>">
                                 <input type="submit" name="btnDone" value="Voltooien" class="done">
                              </form> 
                             </div>
                             <div class="col-md-4">
                              <form action="" method="post">
-                                <input type="hidden" name="deleteDeadlineID" value="<?php echo $deadline_id; ?>">
+                                <input type="hidden" name="deleteDeadlineID" value="<?php echo htmlspecialchars($deadline_id); ?>">
                                 <input type="submit" name="btnDeleteTask" value="Verwijderen" >
                              </form> 
                             </div>
                             <div class="col-md-4">
                                 <div id="bewerkenTaak">
-                                    <a href="editedDeadline.php?Task=<?php echo $deadline_id ?>">Bewerken</a> 
+                                    <a href="editedDeadline.php?Task=<?php echo htmlspecialchars($deadline_id) ?>">Bewerken</a> 
                                 </div>
                             </div>
                         </div> 

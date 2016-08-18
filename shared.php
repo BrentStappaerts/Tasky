@@ -48,10 +48,10 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
@@ -71,8 +71,8 @@
 
                 <li class="comments__list__item">
                         <div class="col-sm-5 .col-md-6" id="GedeeldeTaken">
-                             <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
-                             <p><span><?php echo $daydifference . " dagen resterend"; ?></span></p>
+                             <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo htmlspecialchars($deadline_name); ?></a> 
+                             <p><span><?php echo htmlspecialchars($daydifference) . " dagen resterend"; ?></span></p>
                         </div>
                                  
                  </li>

@@ -58,10 +58,10 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>            
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5></br>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5></br>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
             </div> 
 
         </div>
@@ -80,11 +80,11 @@
                 ?>
                 <li class="comments__list__item">
                     <div id="taakDetails">
-                     <p><strong>Titel: </strong> <?php echo $deadline_name; ?></p> 
-                     <p><strong>Vak: </strong> <?php echo $deadline_vak; ?></p> 
-                     <p><strong>Deadline: </strong> <?php echo $deadline_date; ?></p> 
-                     <p><strong>Resterende dagen: </strong> <?php echo $daydifference ?></p> 
-                     <p><strong>Aantal werkuren: </strong><?php echo $deadline_werkdruk ?></p>
+                     <p><strong>Titel: </strong> <?php echo htmlspecialchars($deadline_name); ?></p> 
+                     <p><strong>Vak: </strong> <?php echo htmlspecialchars($deadline_vak); ?></p> 
+                     <p><strong>Deadline: </strong> <?php echo htmlspecialchars($deadline_date); ?></p> 
+                     <p><strong>Resterende dagen: </strong> <?php echo htmlspecialchars($daydifference); ?></p> 
+                     <p><strong>Aantal werkuren: </strong><?php echo htmlspecialchars($deadline_werkdruk); ?></p>
                     </div>
                  </li>
                 <?php endforeach; ?>

@@ -29,7 +29,6 @@
         list($image_width, $image_height) = getimagesize($image_tmp_name);
         //set new
         $width = 250;
-        $height = 250;
         $height = (int) (($width / $image_width) * $image_height);
         $image_p = imagecreatetruecolor($width, $height);
         if ($image_extension == "jpg") {
@@ -68,17 +67,17 @@
             <img src="public/images/profile.png"/>
             <?php endif; ?>   
             <div class="col-sm-5 .col-md-6" id="gegevens">
-                <h5><?php print($userRow['name']); ?></h5>
+                <h5><?php echo htmlspecialchars($userRow['name']); ?></h5>
             </div>
             <div class="col-sm-5 .col-md-6" id="settings">
-                <a href="editedProfile.php?id=<?php echo $user_id ?>"><img src="public/images/settings.png" /></a>
+                <a href="editedProfile.php?id=<?php echo htmlspecialchars($user_id) ?>"><img src="public/images/settings.png" /></a>
             </div>  
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
             <h3>Profiel</h3></br>
 
-            <p><strong>Naam: </strong><?php print($userRow['name']); ?> </p>
-            <p><strong>Email: </strong><?php print($userRow['email']); ?> </p></br>
+            <p><strong>Naam: </strong><?php echo htmlspecialchars($userRow['name']); ?> </p>
+            <p><strong>Email: </strong><?php echo htmlspecialchars($userRow['email']); ?> </p></br>
             <p><strong>Profiel foto toevoegen: </strong></p>
                 <div class="col-sm-5 .col-md-6">
                      <form action="" method="post" enctype="multipart/form-data">
