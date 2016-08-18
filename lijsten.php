@@ -26,6 +26,7 @@
     $sharedList = $lijst->getSharedList();
 
 
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -57,6 +58,7 @@
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
             <h3>Gedeelde lijsten</h3>
+        <ul class="comments__list">
             <?php if(count($sharedList) > 0):?>
             <ul class="comments__list">
                 <?php foreach($sharedList as $row): ?>
@@ -64,24 +66,24 @@
                 $list_id = $row['list_id'];
                 $list_name = $row['name'];
                 ?>
+
                 <li class="comments__list__item">
-                    <div id="verwijderen">
-                        <a href="list.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
-                        </div> 
-                    </div>          
+                        <div class="col-sm-5 .col-md-6" id="GedeeldeLijsten">
+                              <a href="shared.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
+                        </div>
+                                 
                  </li>
                 <?php endforeach; ?>
             </ul>
             <?php else: ?>
                 <ul class="comments__list"></ul>
             <?php endif; ?>
+
+
+
+
         </div>
-
     </div>
-           
-
-    </div>
-</div>
 
 </body>
 </html>

@@ -34,7 +34,7 @@
             $succes = "Taak succesvol toegevoegd!";
             $allTasks = $deadline->getAll();
         } catch (Exception $e) {
-            $error = "Taak niet correct toegevoegd";
+            $error = "Gelieve alle velden in te vullen.";
         }
     }
 
@@ -93,8 +93,8 @@
                         <?php $vak_name = $row['vak_name']; ?>
                         <option value="<?php echo $vak_name; ?>"><?php echo $vak_name; ?></option>
                         <?php endforeach; ?>
+                        <option value="Overige">Overige</option>
                     <?php else: ?>
-                    <option value="geen">geen</option>
                     <?php endif; ?>
                 </select>
             </div>

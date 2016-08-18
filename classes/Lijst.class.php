@@ -37,7 +37,7 @@ class Lijst {
             $statement->execute();
         }
         else {
-            throw new Exception("Please fill in all fields");
+            throw new Exception("Gelieve alle velden correct in te vullen.");
         }
     }
 

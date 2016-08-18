@@ -61,7 +61,7 @@ class Deadline {
     }
 
     public function Add() {
-        if(!empty($this->m_sTitel) && !empty($this->m_sVak) && !empty($this->m_iDatum)){
+        if(!empty($this->m_sTitel) && !empty($this->m_sVak) && !empty($this->m_iDatum) && !empty($this->m_sWerkdruk)){
             $listID = $_GET['list'];
             $PDO = Db::getInstance();
             $statement = $PDO->prepare("INSERT INTO deadlines (titel, vak, datum, userID, listID, werkdruk) values (:titel, :vak, :datum, :userID, :listID, :werkdruk)");
@@ -73,9 +73,6 @@ class Deadline {
             $statement->bindValue(":werkdruk", $this->m_sWerkdruk);
             $statement->execute();
         }
-        else {
-            throw new Exception("Please fill in all fields");
-        }
     }
     public function getAll(){
             $listID = $_GET['list'];
@@ -86,6 +83,15 @@ class Deadline {
             $statement->execute();
             $allTasks = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $allTasks;
+    }
+    public function getSharedTasks(){
+            $listID = $_GET['list'];
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("SELECT * FROM deadlines WHERE listID = :listID AND datum > CURRENT_DATE() ORDER BY datum ASC");
+            $statement->bindParam(":listID", $listID);
+            $statement->execute();
+            $allSharedTasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $allSharedTasks;
     }
 
     public function getTask(){

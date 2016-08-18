@@ -18,21 +18,12 @@
     }
 
     $lijst = new Lijst();
-    $allLists = $lijst->getAll();
+    $sharedList = $lijst->getSharedList();
 
-    if(isset($_POST['btnDeleteList'])) {
-        $lijst->ListID = $_POST["deleteListID"];
-        $result = $lijst->deleteList();
-        header('Location: home.php');
-    }
+    $deadline = new Deadline();
+    $allSharedTasks = $deadline->getSharedTasks();
 
-    if(isset($_POST['btnDeelList'])) {
-        $lijst->ListID = $_POST["deelListID"];
-        $lijst->share();
-        header('Location: lijsten.php');
-    }
 
- 
 
 ?><!doctype html>
 <html lang="en">
@@ -64,44 +55,44 @@
             </div>   
         </div>
         <div class="col-sm-5 .col-md-6" id="home">
-            <h3>Mijn lijsten</h3>
-            <?php if(count($allLists) > 0):?>
+            <h3>Gedeelde lijst </h3>
+
+        <ul class="comments__list">
+            <?php if(count($allSharedTasks) > 0):?>
             <ul class="comments__list">
-                <?php foreach($allLists as $row): ?>
+                                <?php foreach($allSharedTasks as $row): ?>
                 <?php
-                $list_id = $row['list_id'];
-                $list_name = $row['name'];
+                $deadline_id = $row['deadline_id'];
+                $deadline_name = $row['titel'];
+                $deadline_vak = $row['vak'];
+                $deadline_date = $row['datum'];
+                $daydifference = abs(floor((time() - strtotime($deadline_date))/(60*60*24)));
                 ?>
+
                 <li class="comments__list__item">
-                    <div id="verwijderen">
-                        <div class="col-sm-5 .col-md-6">
-                             <a href="list.php?list=<?php echo $list_id ?>"><?php echo $list_name; ?></a> 
+                        <div class="col-sm-5 .col-md-6" id="GedeeldeTaken">
+                             <a href="task.php?Task=<?php echo $deadline_id; ?>"><?php echo $deadline_name; ?></a> 
+                             <p><span><?php echo $daydifference . " dagen resterend"; ?></span></p>
                         </div>
-                        <div class="col-sm-5 .col-md-6" id="taskMenu">
-                            <div class="col-md-4">
-                             <form action="" method="post">
-                                <input type="hidden" name="deleteListID" value="<?php echo $list_id; ?>">
-                                <input type="submit" name="btnDeleteList" value="Verwijderen">
-                             </form> 
-                            </div>
-                            <div class="col-md-4">
-                             <form action="" method="post">
-                                <input type="hidden" name="deelListID" value="<?php echo $list_id; ?>">
-                                <input type="submit" name="btnDeelList" value="Delen" >
-                             </form> 
-                            </div>
-                        </div> 
-                    </div>          
+                                 
                  </li>
                 <?php endforeach; ?>
             </ul>
             <?php else: ?>
                 <ul class="comments__list"></ul>
             <?php endif; ?>
-        </div>
 
+
+
+
+        </div>
     </div>
-</div>
+
+
+
+
+ 
+
 
 </body>
 </html>
