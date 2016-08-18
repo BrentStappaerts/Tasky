@@ -73,6 +73,9 @@ class Deadline {
             $statement->bindValue(":werkdruk", $this->m_sWerkdruk);
             $statement->execute();
         }
+        else {
+            throw new Exception("Gelieve alle velden in te vullen.");
+        }
     }
     public function getAll(){
             $listID = $_GET['list'];

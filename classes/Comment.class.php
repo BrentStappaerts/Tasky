@@ -41,7 +41,7 @@ class Comment
             $statement->execute();
         }
         else {
-            throw new Exception("Please fill in all fields");
+            throw new Exception("Gelieve commentaar achter te laten.");
         }
     }
 

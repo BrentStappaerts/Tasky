@@ -84,7 +84,7 @@
                                 <input type="submit" name="btnDeleteList" value="Verwijderen">
                              </form> 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" id="enter">
                              <form action="" method="post">
                                 <input type="hidden" name="deelListID" value="<?php echo htmlspecialchars($list_id); ?>">
                                 <input type="submit" name="btnDeelList" value="Delen" >

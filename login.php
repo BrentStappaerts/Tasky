@@ -7,7 +7,7 @@ spl_autoload_register(function ($class_name) {
 
 if(!empty($_POST)){
     if($_POST['action'] === "inloggen") {
-        if(!empty($_POST["email"]) && !empty($_POST["passwordLogin"])){
+        try{
             $user = new User();
             $user->Email = $_POST["email"];
             $user->Password = $_POST["passwordLogin"];
@@ -17,9 +17,8 @@ if(!empty($_POST)){
             } else{
                     $error = "Inloggegvens zijn niet correct.";
             }
-        }
-        else{
-            $error = "Gelieve alle velden in te vullen.";
+        } catch (Exception $e) {
+            $error = $e->getMessage();
         }
     }
 }

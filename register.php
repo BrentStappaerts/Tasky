@@ -6,16 +6,16 @@ spl_autoload_register(function ($class_name) {
 
 if(!empty($_POST)){
     if($_POST['action'] === "registreer") {
-        if(!empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST['password'])) {
+            try{
             $user = new User();
             $user->Name = $_POST["name"];
             $user->Email = $_POST["email"];
             $user->Password = $_POST["password"];
             $user->Register();
             header('Location: login.php');
-        }
-        else{
-            $error = "Gelieve alle velden correct in te vullen";
+
+        } catch (Exception $e) {
+            $error = $e->getMessage();
         }
     }
 }

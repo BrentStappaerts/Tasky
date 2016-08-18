@@ -31,10 +31,9 @@
             $deadline->Datum = $_POST["datum"];
             $deadline->Werkdruk = $_POST["werkdruk"];
             $deadline->Add();
-            $succes = "Taak succesvol toegevoegd!";
             $allTasks = $deadline->getAll();
         } catch (Exception $e) {
-            $error = "Gelieve alle velden in te vullen.";
+            $error = $e->getMessage();
         }
     }
 

@@ -68,18 +68,28 @@ class User {
         }
     }
     public function Register() {
-        if(!empty($this->m_sEmail) && !empty($this->m_sPassword) && !empty($this->m_sName)){
-            $PDO = Db::getInstance();
-            $statement = $PDO->prepare("INSERT INTO users (email, password, name) values (:email, :password, :name)");
-            $options = [ 'cost' => 12];
-            $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
-            $statement->bindValue(":email", $this->m_sEmail);
-            $statement->bindValue(":password", $password);
-            $statement->bindValue(":name", $this->m_sName);
-            $statement->execute();
-        }
-        else {
-            throw new Exception("Please fill in all fields");
+        $PDO = Db::getInstance();
+        $password = $this->m_sPassword;
+
+         if(!empty($this->m_sEmail) && !empty($this->m_sPassword) && !empty($this->m_sName)){
+            if(strlen($password) > 5 && strlen($password) < 21){
+                if(filter_var("some@address.com", FILTER_VALIDATE_EMAIL)) {
+                    $statement = $PDO->prepare("INSERT INTO users (email, password, name) values (:email, :password, :name)");
+                    $options = [ 'cost' => 12];
+                    $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
+                    $statement->bindValue(":email", $this->m_sEmail);
+                    $statement->bindValue(":password", $password);
+                    $statement->bindValue(":name", $this->m_sName);
+                    $statement->execute();
+                   }else {
+                         throw new Exception("Geen geldige email.");
+                        }
+             }else {
+            throw new Exception("Wachtwoord moet tussen de 5 en 21 tekens bevatten.");
+             }
+
+        }else {
+            throw new Exception("Gelieve alle velden in te vullen");
         }
     }
 

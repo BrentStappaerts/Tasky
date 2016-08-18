@@ -28,8 +28,8 @@
             $deadline->Werkdruk = $_POST["werkdruk"];
             $deadline->updateTask();
             header('Location: task.php?Task=' . $_GET['Task']);
-        } catch (Exception $e){
-            $error= "Bewerking mislukt!";
+        } catch (Exception $e) {
+            $error = $e->getMessage();
         }
     }
 
